@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+    <head>
+        @Html.Partial("_partials/_head")
+        @RenderSection("head", required: false)
+    </head>
+    <body class="main">
+        @Html.Partial("_partials/_header")
+        <div id="site_container" class="container-fluid flex-fill">
+            <div class="row">
+                <main id="page_container" role="main" class="col">
+                    <section class="body-section">
+                        <div class="body-container">
+                            <div class="row">
+                                <div class="col-12 @(Model.GetBool("HideSidebar") ? "" : "col-lg-9")">
+                                    @RenderBody()
+                                </div>
+                                @if (!Model.GetBool("HideSidebar"))
+                                {
+                                    <div class="col-lg-3 col-12">
+                                        @Html.Partial($"/{Constants.BlogPath}/_sidebar.cshtml")
+                                    </div>
+                                }
+                            </div>
+                            
+                        </div>
+                    </section>
+                    @Html.Partial("_partials/_footer")
+                </main>
+            </div>
+        </div>
+    </body>
+</html>

@@ -1,0 +1,16 @@
+ArchiveSources: => $"{Constants.BlogPath}/posts/*"
+ArchiveDestination: >
+  => GetInt("Index") <= 1 ? $"{Constants.BlogPath}/index.html" : $"{Constants.BlogPath}/{GetInt("Index")}.html"
+ArchivePageSize: => @Constants.PostsPerPage
+ArchiveOrderKey: Published
+ArchiveOrderDescending: true
+Title: All Posts
+ArchiveTitle: >
+  => $"{Title}{(GetInt("Index") > 1 ? (" (Page " + GetInt("Index") + ")") : null)}"
+---
+
+<section class="blog-section">
+    <div class="blog-container">
+        @Html.Partial($"/{Constants.BlogPath}/_posts.cshtml", Document.GetChildren())
+    </div>
+</section>

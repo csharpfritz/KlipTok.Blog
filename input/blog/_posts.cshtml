@@ -1,0 +1,55 @@
+﻿@inherits StatiqRazorPage<IEnumerable<IDocument>>
+<div>    
+    @foreach (IDocument post in Model)
+    {
+        IDocument topicDocument = Outputs[nameof(Archives)][$"{Constants.BlogPath}/categories/{post.GetString("Category")}/index.html"];
+        string excerpt = post.GetString(Statiq.Html.HtmlKeys.Excerpt);
+        excerpt = excerpt.RemoveEnd("</p>"); //remove final '</p>'
+        var words = excerpt.Split().Take(50); //only interested in first 50 words, so add them to array
+        excerpt = string.Join(" ", words); //rejoin the words as single string
+        excerpt += $" ... <span class=\"small\"><a href=\"{Context.GetLink(post)}\">Read more</a></span></p>"; //add it back with some more goodies
+        <article class="post">
+            <header>
+                <h2 itemprop="headline name">
+                    <a itemprop="url" href="@Context.GetLink(post).Substring(1)">@post.GetString("Title")</a>
+                </h2>
+                <div class="bh">
+                    <time datetime="@post.GetString("Published")" itemprop="datePublished">@post.GetDateTime("Published").ToString("MMMM dd, yyyy")</time>
+                    @if (topicDocument != null)
+                    {
+                        <a href="@(topicDocument.GetLink())"><span class="badge badge-light">@topicDocument.GetTitle()</span></a>
+                    }
+                </div>
+            </header>
+            <div itemprop="articleBody">
+                @Html.Raw(excerpt)
+            </div>
+            <div class="collapse" aria-hidden="true" itemprop="author" itemscope="" itemtype="http://schema.org/Person">
+                <meta itemprop="name" content="@post.GetString("Author")">
+            </div>
+            <meta itemprop="dateModified" content="@post.GetString("Modified")">
+        </article>
+    }
+</div>
+
+@{
+    IDocument older = Document.GetDocument(Keys.Next);
+    IDocument newer = Document.GetDocument(Keys.Previous);
+}
+@if (older != null || newer != null)
+{
+    <div class="d-flex flex-row justify-content-between">
+        <div>
+            @if (older != null)
+            {
+                <a class="btn btn-primary" href="@Context.GetLink(older)" role="button">Older</a>
+            }
+        </div>
+        <div>
+            @if (newer != null)
+            {
+                <a class="btn btn-primary" href="@Context.GetLink(newer)" role="button">Newer</a>
+            }
+        </div>
+    </div>
+}
