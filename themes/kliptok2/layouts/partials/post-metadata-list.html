@@ -1,0 +1,10 @@
+<!-- supports emoji -->
+<h1 class="title"><a href="{{ .Permalink }}">{{ .Title | emojify }}</a>{{ if .Draft }} ::Draft{{ end }} 
+    <small class="text-muted pull-right">{{ .Date.Format "January 2, 2006" }}</small>
+</h1>
+<div class="post-metadata">
+  <p class="text-muted">{{ .Params.subtitle }}</p>
+  {{ if .Params.tags }}
+    {{ partial "tags" .Params.tags }}
+  {{ end }}
+</div>

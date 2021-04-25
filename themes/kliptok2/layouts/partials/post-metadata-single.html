@@ -1,0 +1,12 @@
+<!-- supports emoji -->
+<h1 class="title"><a href="{{ .Permalink }}">{{ .Title | emojify }}</a>{{ if .Draft }} ::Draft{{ end }}</h1>
+<div class="post-metadata">
+    {{ if (ne ($.Param "displayauthor") false) }}
+        <small class="text-muted">by {{ .Params.author | default .Site.Params.author }}</small>
+    {{ end }}
+    <p class="text-muted">{{ .Params.subtitle }}</p>
+    {{ if .Params.tags }}
+        {{ partial "tags" .Params.tags }}
+    {{ end }}
+    <p class="text-muted"><i class="fa fa-calendar" aria-hidden="true"></i> {{ .Date.Format "January 2, 2006" }}</p>
+</div>
