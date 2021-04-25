@@ -1,3 +1,23 @@
-baseURL = "http://example.org/"
+baseURL = "https://blog.kliptok.com/"
 languageCode = "en-us"
-title = "My New Hugo Site"
+title = "KlipTok News and Notes"
+theme = "kliptok"
+
+publishDir = "docs"
+
+[taxonomies]
+  category = "categories"
+  tag = "tags"
+
+[params]
+	author = "Jeffrey T. Fritz"
+  keywords = ["kliptok", "blazor", "azure", "twitch","twitch clips"]
+	description = "All the latest updates about the KlipTok application"
+  avatar = "/images/kliptok.png"
+  displayauthor = false
+  # pygments
+  PygmentsUseClasses = true
+  PygmentsCodeFences = true
+  # pagination
+  paginate = 10
+  paginatePath = "page"
