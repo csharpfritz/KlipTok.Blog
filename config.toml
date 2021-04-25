@@ -1,7 +1,7 @@
 baseURL = "https://blog.kliptok.com/"
 languageCode = "en-us"
 title = "KlipTok News and Notes"
-theme = "kliptok"
+theme = "kliptok2"
 
 publishDir = "docs"
 
