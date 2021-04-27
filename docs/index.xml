@@ -6,19 +6,9 @@
     <description>Recent content on KlipTok News and Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
-    <lastBuildDate>Sat, 24 Apr 2021 18:29:55 -0400</lastBuildDate>
     
 	<atom:link href="https://kliptok.com/blog/index.xml" rel="self" type="application/rss+xml" />
     
-    
-    <item>
-      <title>First Post</title>
-      <link>https://kliptok.com/blog/posts/first-post/</link>
-      <pubDate>Sat, 24 Apr 2021 18:29:55 -0400</pubDate>
-      
-      <guid>https://kliptok.com/blog/posts/first-post/</guid>
-      <description>First post! This is my first post&amp;hellip;. narf!</description>
-    </item>
     
   </channel>
 </rss>
