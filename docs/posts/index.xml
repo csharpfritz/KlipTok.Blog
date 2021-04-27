@@ -1,14 +1,14 @@
 <?xml version="1.0" encoding="utf-8" standalone="yes"?>
 <rss version="2.0" xmlns:atom="http://www.w3.org/2005/Atom">
   <channel>
-    <title>KlipTok News and Notes</title>
-    <link>https://kliptok.com/blog/</link>
-    <description>Recent content on KlipTok News and Notes</description>
+    <title>Posts on KlipTok News and Notes</title>
+    <link>https://kliptok.com/blog/posts/</link>
+    <description>Recent content in Posts on KlipTok News and Notes</description>
     <generator>Hugo -- gohugo.io</generator>
     <language>en-us</language>
     <lastBuildDate>Sat, 24 Apr 2021 18:29:55 -0400</lastBuildDate>
     
-	<atom:link href="https://kliptok.com/blog/index.xml" rel="self" type="application/rss+xml" />
+	<atom:link href="https://kliptok.com/blog/posts/index.xml" rel="self" type="application/rss+xml" />
     
     
     <item>
