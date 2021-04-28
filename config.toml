@@ -1,4 +1,4 @@
-baseURL = "https://kliptok.com/blog"
+baseURL = "https://kliptok.com/blog/"
 languageCode = "en-us"
 title = "KlipTok News and Notes"
 theme = "kliptok2"
