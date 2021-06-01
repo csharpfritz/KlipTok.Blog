@@ -1,13 +1,46 @@
 <html>
 	<head>
 		<title>{{ Title }}</title>
+		<base href="./">
+		<link rel="stylesheet" type="text/css" href="../site.css">
 	</head>
 	<body>
 
-		<h1>{{ Title }}</h1>
-		<h5>Published: {{ PublishDate }}</h5>
+		<header>
+			<div class="container">
+				<img src="../kliptok.png" alt="KlipTok Logo" />
+				<div>
+					<h1>KlipTok News and Notes</h1>
+					<h3>All the latest updates about the KlipTok application</h3>
+				</div>
+			</div>
+		</header>
 
-		{{ Body }}
+		<main>
+
+			<div id="sidebar">
+				
+				<h2>Links</h2>
+				<ul>	
+					<li><a href="https://kliptok.com">KlipTok</a></li>
+					<li><a href="https://feedback.kliptok.com">KlipTok Feedback</a></li>
+					<li><a href="https://github.com/csharpfritz/KlipTok.Translations">Translation Repository</a></li>
+				</ul>
+
+			</div>
+
+			<div id="main">
+				<h1>{{ Title }}</h1>
+				<h5>Published: {{ PublishDate }}</h5>
+		
+				{{ Body }}
+		
+			</div>
+
+		</main>
+
+		<footer>Copyright &copy;2021 Jeffrey T. Fritz</footer>
+
 
 	</body>
 </html>
