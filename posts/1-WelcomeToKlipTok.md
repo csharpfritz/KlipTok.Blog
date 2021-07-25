@@ -20,7 +20,7 @@ The technical goal of this web application was to build a complete site using th
 
 At the time of the writing of this blog post (at the end of July 2021), we're about 8 months into the evolution of the site and it hosts about 680 channels clips.  There are more than 3.1 million clips that KlipTok has indexed and are available for you to discover.
 
-We've added the ability for the site to be translated to a number of different languages with the help of our KlipTok community.  The translations are all available in JSON format [on GitHub](https:/github.com/csharpfritz/KlipTok.Translations) and you are welcome to contribute new or missing translations.
+We've added the ability for the site to be translated to a number of different languages with the help of our KlipTok community.  The translations are all available in JSON format [on GitHub](https://github.com/csharpfritz/KlipTok.Translations) and you are welcome to contribute new or missing translations.
 
 Viewer and user feedback is VERY important to me in the construction of KlipTok, and I've configured a user feedback website using [Fider](https://getfider.com).  You can see the requested features and my notes about the next features that are going to be built at https://feedback.kliptok.com
 
