@@ -3,6 +3,7 @@
 		<title>{{ Title }}</title>
 		<base href="./">
 		<link rel="stylesheet" type="text/css" href="site.css">
+		<link rel="stylesheet" type="text/css" href="prism.css">
 
 		<!-- Global site tag (gtag.js) - Google Analytics -->
 		<script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script>
@@ -43,11 +44,16 @@
 			</div>
 
 			<div id="main">
-				{{ Body }}
+
+				<div id="content">
+					{{ Body }}
+				</div>
 			</div>
 
 		</main>
 
 		<footer>Copyright &copy;2021 Jeffrey T. Fritz</footer>
+
+		<script src="prism.js"></script>
 	</body>
 </html>
