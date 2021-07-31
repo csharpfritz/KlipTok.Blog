@@ -8,7 +8,7 @@ Over the last few months, the most requested feature on KlipTok on the [feedback
 
 <div class="center">
 
-[![Screenshot from feedback.kliptok.com - Request to add a 'Live' indicator next to channels](/img/feedback-LiveIndicator.png)](https://feedback.kliptok.com/posts/23/live-now-icon-next-to-the-channels-name-in-the-list-of-streamers)
+[![Screenshot from feedback.kliptok.com - Request to add a 'Live' indicator next to channels](img/feedback-LiveIndicator.png)](https://feedback.kliptok.com/posts/23/live-now-icon-next-to-the-channels-name-in-the-list-of-streamers)
 
 <span aria-label="caption" class="caption">Original feedback requesting the Live Indicator</span>
 
@@ -22,7 +22,7 @@ You can even use the sidebar refresh buttons, the spinning arrows next to the ti
 
 <div class="center">
 
-![Screenshot of KlipTok showing the new LIVE indicator in the sidebar](/img/liveIndicator.png)
+![Screenshot of KlipTok showing the new LIVE indicator in the sidebar](img/liveIndicator.png)
 
 <span aria-label="caption" class="caption">Implementation of the Live Indicator on KlipTok</span>
 
