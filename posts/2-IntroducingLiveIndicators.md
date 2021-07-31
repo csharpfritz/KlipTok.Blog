@@ -18,6 +18,8 @@ On Twitch, its a simple red circle.. the circle doesn't really tell you anything
 
 Our 'Live Now' indicator is a red rounded square with the word 'LIVE' in the middle.  It's easy to spot and clear what it's referring to.  If you click on it, you'll be taken to their channel in a new tab of your browser.
 
+You can even use the sidebar refresh buttons, the spinning arrows next to the titles in the sidebar, to refresh the list of current channels that KlipTok has for you and it will update the Live status appropriately as well.
+
 <div class="center">
 
 ![Screenshot of KlipTok showing the new LIVE indicator in the sidebar](/img/liveIndicator.png)
