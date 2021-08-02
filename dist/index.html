@@ -62,7 +62,38 @@
 <h2 id="behind-the-feature-how-does-it-work">Behind the feature - How does it work?</h2>
 <p>As more of KlipTok is built, we're going to use this as an opportunity to <strong>TEACH</strong> more about how to build websites and the features behind them.  Going forward, look for descriptions about the KlipTok architecture, but not all of our secrets, whenever a new feature is released.</p>
 <h3 id="getting-the-live-status-from-twitch">Getting the Live Status from Twitch</h3>
-<p>The <a href="https://dev.twitch.tv/docs/api/reference#get-streams">Twitch APIs</a> make it easy to run a query to collect the current state of a stream.  When KlipTok's background processes run to discover newly created clips, they inspect the list of currently active streams and ONLY search those streams for new clips.  We know that more than 95% of the clips that are created for a stream are created while the broadcaster is actively streaming, so we focus on collecting those clips as they are created.  Once an hour, we examine ALL channels that KlipTok has indexed.</p>
+<p>The <a href="https://dev.twitch.tv/docs/api/reference#get-streams">Twitch APIs</a> make it easy to run a query to collect the current state of a stream.</p>
+<pre><code>GET https://api.twitch.tv/helix/streams?user_id=96909659&amp;user_id=63208102
+</code></pre>
+<p>This query would return data similar to the following:</p>
+<pre><code>{
+  &quot;data&quot;: [
+    {
+      &quot;id&quot;: &quot;41375541868&quot;,
+      &quot;user_id&quot;: &quot;96909659&quot;,
+      &quot;user_login&quot;: &quot;csharpfritz&quot;,
+      &quot;user_name&quot;: &quot;csharpfritz&quot;,
+      &quot;game_id&quot;: &quot;509670&quot;,
+      &quot;game_name&quot;: &quot;Science &amp; Technology&quot;,
+      &quot;type&quot;: &quot;live&quot;,
+      &quot;title&quot;: &quot;Writing software&quot;,
+      &quot;viewer_count&quot;: 78,
+      &quot;started_at&quot;: &quot;2021-03-10T15:04:21Z&quot;,
+      &quot;language&quot;: &quot;es&quot;,
+      &quot;thumbnail_url&quot;: &quot;https://static-cdn.jtvnw.net/previews-ttv/live_user_auronplay-{width}x{height}.jpg&quot;,
+      &quot;tag_ids&quot;: [
+        &quot;&quot;
+      ],
+      &quot;is_mature&quot;: false
+    },
+    ...
+  ],
+  &quot;pagination&quot;: {
+    &quot;cursor&quot;: &quot;abcdef1234&quot;
+  }
+}
+</code></pre>
+<p>When KlipTok's background processes run to discover newly created clips, they inspect the list of currently active streams and ONLY search those streams for new clips.  We know that more than 95% of the clips that are created for a stream are created while the broadcaster is actively streaming, so we focus on collecting those clips as they are created.  Once an hour, we examine ALL channels that KlipTok has indexed.</p>
 <p>Since we were collecting this data about the active streams in order to filter the list of channels that the KlipTok processes were searching against, why not save that information and present it to the KlipTok users as they use the site?  Easy enough... we created a <code>LiveChannels</code> table and stored the id of the channels that are currently streaming.</p>
 <p>I wrote a method on our <code>LiveChannelsRepository</code> class that would <code>Replace</code> the current contents of the table with the collection of the live channels we discovered.  It's crude, but it works.</p>
 <pre><code class="language-csharp">	await _LiveChannelsRepository.Replace(

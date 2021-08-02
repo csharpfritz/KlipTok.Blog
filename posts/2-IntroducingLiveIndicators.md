@@ -34,7 +34,44 @@ As more of KlipTok is built, we're going to use this as an opportunity to __TEAC
 
 ### Getting the Live Status from Twitch
 
-The [Twitch APIs](https://dev.twitch.tv/docs/api/reference#get-streams) make it easy to run a query to collect the current state of a stream.  When KlipTok's background processes run to discover newly created clips, they inspect the list of currently active streams and ONLY search those streams for new clips.  We know that more than 95% of the clips that are created for a stream are created while the broadcaster is actively streaming, so we focus on collecting those clips as they are created.  Once an hour, we examine ALL channels that KlipTok has indexed.
+The [Twitch APIs](https://dev.twitch.tv/docs/api/reference#get-streams) make it easy to run a query to collect the current state of a stream.  
+
+```
+GET https://api.twitch.tv/helix/streams?user_id=96909659&user_id=63208102
+```
+
+This query would return data similar to the following:
+
+```
+{
+  "data": [
+    {
+      "id": "41375541868",
+      "user_id": "96909659",
+      "user_login": "csharpfritz",
+      "user_name": "csharpfritz",
+      "game_id": "509670",
+      "game_name": "Science & Technology",
+      "type": "live",
+      "title": "Writing software",
+      "viewer_count": 78,
+      "started_at": "2021-03-10T15:04:21Z",
+      "language": "es",
+      "thumbnail_url": "https://static-cdn.jtvnw.net/previews-ttv/live_user_auronplay-{width}x{height}.jpg",
+      "tag_ids": [
+        ""
+      ],
+      "is_mature": false
+    },
+    ...
+  ],
+  "pagination": {
+    "cursor": "abcdef1234"
+  }
+}
+```
+
+When KlipTok's background processes run to discover newly created clips, they inspect the list of currently active streams and ONLY search those streams for new clips.  We know that more than 95% of the clips that are created for a stream are created while the broadcaster is actively streaming, so we focus on collecting those clips as they are created.  Once an hour, we examine ALL channels that KlipTok has indexed.
 
 Since we were collecting this data about the active streams in order to filter the list of channels that the KlipTok processes were searching against, why not save that information and present it to the KlipTok users as they use the site?  Easy enough... we created a `LiveChannels` table and stored the id of the channels that are currently streaming.
 
