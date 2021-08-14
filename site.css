@@ -121,6 +121,10 @@ footer {
 	word-wrap: break-word;
 }
 
+header h1 a {
+	color: #FFF!important;
+}
+
 #sidebar li {
 	margin-bottom: 0.6em;
 }
