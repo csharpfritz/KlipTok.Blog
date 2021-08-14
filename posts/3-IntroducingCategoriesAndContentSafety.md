@@ -16,5 +16,21 @@ The [Interactive Advertising Bureau (IAB)](https://www.iab.com) has a set of cat
 
 << INSERT IMAGE OF IAB CATEGORY TAGS >>
 
-AssemblyAI provides a feature to detect the IAB Categories of your videos based on their transcript.  These categories can be VERY accurate... and sometimes a little funny in what they are guessing your clips are about.  KlipTok is only going to show the first 4 categories with more than 60% confidence that it thinks your video falls into.
+AssemblyAI provides a feature to [detect the IAB Categories](https://docs.assemblyai.com/guides/iab-categorization) of your videos based on their transcript.  These categories can be VERY accurate... and sometimes a little funny in what they are guessing your clips are about.  KlipTok is only going to show the first 4 categories with more than 60% confidence that it thinks your video falls into.  There's a hidden tooltip on each of the tags showing the confidence percentage reported by AssemblyAI's detection algorithm for that category on the clip.
+
+### Content Safety tags
+
+The second AssemblyAI detection feature we are implementing is the [detection of content safety](https://docs.assemblyai.com/guides/content-safety-detection) warnings.  This feature uses the same transcription analysis and detection request to detect foul language and other topics that may require content safety warnings in various cultures.  These tags are added with a red background to separate them from the category tags.  Just like the IAB category tags, you can inspect the hidden tooltip on each tag to see the confidence percentage reported by AssemblyAI for each tag.
+
+## Translation Updates
+
+Translations for KlipTok (to date) have been created and maintained by the user community.  We saw a few updates over the last week for Farsi, Finnish, German, Indonesian, Italian, and Polish translations.  Additionally, Slovenian was added to our roster of 23 languages supported by KlipTok.
+
+Finally, we have updated the translation combobox to list each supported language in their native language to make it easier to locate and translate KlipTok to your preferred written language.
+
+<< INSERT TRANSLATION COMBOBOX IMAGE >>
+
+## Summary
+
+
 
