@@ -54,7 +54,23 @@
 			<div id="main">
 
 				<div id="content">
-					<h2><a href="posts/3-IntroducingCategoriesAndContentSafety.html">Version 0.23 - Introducing IAB Categories and Content Safety</a></h2>
+					<h2><a href="posts/4-FourMillionChannels.html">Milestone Reached - 4 MILLION Clips Indexed!</a></h2>
+<p>KlipTok just crossed another major milestone on the evening of August 18th:</p>
+<div class="center">
+<p><img src="img/4million.PNG" alt="4 million clips on the KlipTok dashboard" /></p>
+</div>
+<p>We're now service more than 4 million klips for about 750 Twitch channels with more than 11k transcriptions.  It's a huge step, and is stored on about 10GB of storage for the database and search indexes.</p>
+<h2 id="how-are-those-4-million-clips-stored-and-indexed">How are those 4 million clips stored and indexed?</h2>
+<p>The clips are stored in a MySql database hosted on Microsoft Azure that allows us to join in and query based on the channel id or the unique 'slug' text that identifies the clip.</p>
+<p>There are entries in <a href="https://azure.microsoft.com/services/storage/tables/">Azure Table Storage</a> for the titles of the clips and the transcriptions of the clips.  This table storage is further indexed by <a href="https://azure.microsoft.com/services/search/">Azure Cognitive Search</a> so that you can search for clips based on the title of the clip or the words spoken in the clip.</p>
+<p>I use <a href="https://azure.microsoft.com/services/service-bus/">Azure Service Bus</a> to process all of these records as they arrive from Twitch, get processed by AssemblyAI for transcripts, and store the clip data for processing and search indexing.</p>
+<p>That's... that's a lot of storage to manage and indexes to update.  What if we could make that a lot more concise and simpler?</p>
+<h2 id="enter-ravendb">Enter RavenDb</h2>
+<p>Starting next week, we're going to start migrating data to RavenDb.  <a href="https://ravendb.net">RavenDb</a> is a NoSQL database provider that has a bunch of smart features built into it that allow it to detect and build indexes appropriately for our queries.  It also has a built in search indexing feature that allows us to generate a search index and search fields in document records.</p>
+<p>Additionally, I have found and witnessed a few demos that show how to build an elementary recommendation engine using RavenDb queries.  When I saw these demos, I was sold on being able to build and roll out a better list of recommended channels and clips to discover on the front page of KlipTok.</p>
+<p>RavenDb feels like a perfect match for the various ways that we store and interact with clip data for KlipTok.  I hope you tune in to the <a href="https://twitch.tv/csharpfritz">csharpfritz Twitch stream</a> in the week ahead as I migrate and roll out this update.</p>
+
+<h2><a href="posts/3-IntroducingCategoriesAndContentSafety.html">Version 0.23 - Introducing IAB Categories and Content Safety</a></h2>
 <p>This week we are happy to announce the release of Version 0.23 with a number of small fixes, updated translations, a new translation for Slovenian, and a new feature: IAB Categories and Content Safety tags for transcribed clips.  I'm definitely burying the lede here, but I think it's worth it to give you a quick summary of what's new.</p>
 <h2 id="iab-categories-and-content-safety">IAB Categories and Content Safety</h2>
 <p>With our partners at <a href="https://assemblyai.com">Assembly AI</a>, we've introduced IAB Categories and Content Safety tags to clips.  You'll recall that we added clip transcriptions to KlipTok in July and made those transcriptions available to search.  We're the only website on the internet where you can search for videos based on the dialogue in the video.</p>
@@ -180,7 +196,7 @@
 
 		</main>
 
-		<footer>Copyright &copy;2021 Jeffrey T. Fritz</footer>
+		<footer>Copyright &copy;2021 KlipTok Inc.</footer>
 
 		<script src="prism.js"></script>
 	</body>
