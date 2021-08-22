@@ -1,0 +1,113 @@
+<html>
+	<head>
+		<title>Version 0.23 - Introducing IAB Categories and Content Safety</title>
+		<base href="./../">
+		<link rel="stylesheet" type="text/css" href="site.css">
+		<link rel="stylesheet" type="text/css" href="prism.css">
+
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-371VNCMVCF');
+		</script>		
+	</head>
+	<body>
+
+		<header>
+			<div class="container">
+				<a href="./"><img src="kliptok.png" alt="KlipTok Logo" /></a>
+				<div>
+					<h1><a href="./">KlipTok News and Notes</a></h1>
+					<h3>All the latest updates about the KlipTok application</h3>
+				</div>
+			</div>
+		</header>
+
+		<main>
+
+			<div id="sidebar">
+				
+				<h2>Links</h2>
+				<ul>	
+					<li><a href="https://kliptok.com">KlipTok</a></li>
+					<li><a href="https://feedback.kliptok.com">KlipTok Feedback</a></li>
+					<li><a href="https://github.com/csharpfritz/KlipTok.Blog">Blog source on GitHub</a></li>
+					<li><a href="https://github.com/csharpfritz/KlipTok.Translations">Translation Repository</a></li>
+				</ul>
+
+				<h2>KlipTok uses:</h2>
+				<ul>
+					<li><a href="https://www.telerik.com/blazor-ui">Telerik UI for Blazor</a></li>
+					<li><a href="https://assemblyai.com">Assembly AI transcription services</a></li>
+					<li><a href="https://github.com/csharpfritz/Fritz.StaticWeb">Fritz Static Web Generator</a></li>
+				</ul>
+
+				<a href="https://twitter.com/thekliptok?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @thekliptok</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+			</div>
+
+			<div id="main">
+
+				<div id="content">
+
+					<h1>Version 0.23 - Introducing IAB Categories and Content Safety</h1>
+					<h5>Published: 8/14/2021 14:15:00</h5>
+			
+					<p>This week we are happy to announce the release of Version 0.23 with a number of small fixes, updated translations, a new translation for Slovenian, and a new feature: IAB Categories and Content Safety tags for transcribed clips.  I'm definitely burying the lede here, but I think it's worth it to give you a quick summary of what's new.</p>
+<h2 id="iab-categories-and-content-safety">IAB Categories and Content Safety</h2>
+<p>With our partners at <a href="https://assemblyai.com">Assembly AI</a>, we've introduced IAB Categories and Content Safety tags to clips.  You'll recall that we added clip transcriptions to KlipTok in July and made those transcriptions available to search.  We're the only website on the internet where you can search for videos based on the dialogue in the video.</p>
+<div class="center">
+<p><img src="img/transcription_search.png" alt="Search for 'Thanks Amanda' and finding the clip" /></p>
+<p><span aria-label="caption" class="caption">Search for 'Thanks Amanda' and finding the clip where I say &quot;Thanks Amanda&quot;</span></p>
+</div>
+<p>The <a href="https://www.iab.com">Interactive Advertising Bureau (IAB)</a> has a set of categories that you can use to categorize your videos.  They're a great way to make sure that your videos are appropriate for children and young people.  A <a href="https://www.iab.com/guidelines/video-ad-categories/">full list of categories</a> is available online.  We've added the categories to KlipTok and you can see them tagged on clips that have been transcribed.</p>
+<div class="center">
+<p><img src="img/IabAndSafetyTags.PNG" alt="IAB Category Tags and Content Safety Tags for a clip" /></p>
+<p><span aria-label="caption" class="caption">IAB Category Tags and Content Safety Tags for a clip</span></p>
+</div>
+<p>AssemblyAI provides a feature to <a href="https://docs.assemblyai.com/guides/iab-categorization">detect the IAB Categories</a> of your videos based on their transcript.  These categories can be VERY accurate... and sometimes a little funny in what they are guessing your clips are about.  KlipTok is only going to show the first 4 categories with more than 60% confidence that it thinks your video falls into.  There's a hidden tooltip on each of the tags showing the confidence percentage reported by AssemblyAI's detection algorithm for that category on the clip.</p>
+<h3 id="content-safety-tags">Content Safety tags</h3>
+<p>The second AssemblyAI detection feature we are implementing is the <a href="https://docs.assemblyai.com/guides/content-safety-detection">detection of content safety</a> warnings.  This feature uses the same transcription analysis and detection request to detect foul language and other topics that may require content safety warnings in various cultures.  These tags are added with a red background to separate them from the category tags.  Just like the IAB category tags, you can inspect the hidden tooltip on each tag to see the confidence percentage reported by AssemblyAI for each tag.</p>
+<h2 id="translation-updates">Translation Updates</h2>
+<p>Translations for KlipTok (to date) have been created and maintained by the user community.  We saw a few updates over the last week for Farsi, Finnish, German, Indonesian, Italian, and Polish translations.  Additionally, Slovenian was added to our roster of 23 languages supported by KlipTok.</p>
+<p>Finally, we have updated the translation combobox to list each supported language in their native language to make it easier to locate and translate KlipTok to your preferred written language.</p>
+<div class="center">
+<p><img src="img/translation_box.PNG" alt="Native translations of the languages in the language selector" /></p>
+<p><span aria-label="caption" class="caption">Native translations of the languages in the language selector</span></p>
+</div>
+<h3 id="how-does-kliptok-translate-to-your-language">How does KlipTok translate to your language?</h3>
+<p>KlipTok uses a library called <a href="https://github.com/jsakamoto/Toolbelt.Blazor.I18nText">Toolbelt.Blazor.I18nText</a> to translate its text.  There is an object embedded in every Blazor component delivered on KlipTok called <code>Localize</code> that loads up the correct translation file for your language.</p>
+<pre><code class="language-csharp">	if (Localize == null)
+	{
+		Localize = await I18nText.GetTextTableAsync<I18nText.KlipTok>(this);
+		StateHasChanged();
+	}</code></pre>
+<p>All text that is rendered for the web page passes through that collection.  The Search bar at the top of the screen has it's watermark text placed with:</p>
+<pre><code class="language-csharp">@Localize?["SearchKlipTok"]</code></pre>
+<p>The search results text referencing the <code>SearchTerm</code> submitted is formatted like this:</p>
+<pre><code class="language-csharp"><p>@string.Format(Localize?["SearchedKlipTokAndFoundTemplate"], SearchTerm)</p></code></pre>
+<p>The translations are all stored in JSON format and open for community contributions <a href="https://github.com/csharpfritz/KlipTok.Translations">on GitHub</a></p>
+<h2 id="up-next">Up Next</h2>
+<p>KlipTok has grown and become a bit more complex over the last few months.  We're service more than 3.8 million clips and need to provide some assurance that updates to the site don't break things.  I've started working on building integration tests using <a href="https://playwright.dev">Playwright</a> and will be making those test scripts publicly available <a href="https://github.com/csharpfritz/KlipTok.IntegrationTests">on GitHub</a> as well.</p>
+<h2 id="summary">Summary</h2>
+<p>Introducing these new features and translations has added a lot of value to KlipTok and made it easier for your to understand the content you'll find in the clips we present.  I hope you find these new features useful as I move forward with additional improvements.</p>
+
+
+					<h5><a href="/blog">Back to front page</a></h5>
+
+				</div>	
+
+			</div>
+
+		</main>
+
+		<footer>Copyright &copy;2021 KlipTok Inc.</footer>
+
+		<script src="prism.js"></script>
+	</body>
+</html>

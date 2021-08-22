@@ -73,7 +73,6 @@ header .container {
 		padding-left: 0;
 	}
 
-
 	#main {
 
 		height: calc(100vh - 125px - 4em);
@@ -120,4 +119,12 @@ footer {
 	font-size: 85%;
 	padding: 0.1em 0.2em;
 	word-wrap: break-word;
+}
+
+header h1 a {
+	color: #FFF!important;
+}
+
+#sidebar li {
+	margin-bottom: 0.6em;
 }
