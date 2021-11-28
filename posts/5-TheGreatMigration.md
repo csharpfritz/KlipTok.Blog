@@ -32,4 +32,63 @@ Uh oh...
 
 ## Enter RavenDb
 
+I looked at a number of database and search engine solutions including Postgres, Elastic, and CosmosDb.  All of these lacked one feature or another, including the most important feature for a service that I was bootstrapping:  price.  This is where RavenDb entered:  a decent price and it had all of the features I was looking for:
 
+- .NET native support
+- Search capabilities built in
+- Strong indexing features
+- Replication and redundancy built in to the base cost
+
+[RavenDb](ravendb.com) delivers all of these features and has an amazing set of integrations with other databases as well as a customer support team that has been very happy to answer all of my questions and then some.  I've been really impressed with their product.
+
+### RavenDb in the Cloud and non-relational data
+
+Their cloud-based version of the database runs on my choice of cloud service, and that choice would be Azure.  I got 3 nodes up and running quickly with a certificate authentication system that imported my data from MySQL quickly and easily.  What struck me though, was how slow indexing ran.  This turned out to be a major headache, as I was still architecting and thinking relationally when I could be storing my data using a more NoSQL approach and seeing major performance improvements.
+
+Let's consider the storage of a user's followed accounts.
+
+In a relational database, it works well to have a single table for all follower records and each record stores the account id and one of the accounts it follows.
+
+| AccountId | FollowedAccountId |
+| ---- | ---- |
+| Fritz | TwitchDev |
+| Fritz | VisualStudio |
+| Fritz | CodeItLive |
+
+To retrieve the list of accounts that Fritz follows, we just query the table like this:
+
+```sql
+SELECT FollowedAccountId from Follows WHERE AccountId = 'Fritz'
+```
+
+Sure, that works and we need to have an index on the `AccountId` field to help boost the performacne of that query.
+
+In RavenDb we can structure this data to instead of querying and retrieving many rows, to retrieve 1 row with a collection of FollowedAccountId values that could easily be joined into the `Channels` collection.
+
+```c#
+session.LoadAsync<FollowerRecord>("Follower/Fritz", i => i.IncludeDocuments(f => f.ChannelIds))
+```
+
+This is because the data for the `FollowerRecord` is stored with an array of `ChannelId` values for each `AccountId`.  Since the `AccountId` is the unique identifier for the record, this query runs almost instantaneously and the `ChannelId` include operation takes less than 10ms to return all of the related records.
+
+### RavenDb and search
+
+The second feature I was looking for was an improved search capability, built into the database.  In RavenDb, I was able to configure search indexes using [Lucene](http://lucene.apache.org/) that would automatically keep up with my data as it changes.  Consider this index configuration for allowing search of channel names:
+
+```c#
+from c in docs.Channels
+select new {
+    c.DisplayName
+}
+```
+
+I then configured the `DisplayName` field with an NGram Analyzer in the search indexer like this:
+
+![RavenDb console showing the NGram Analyzer configured for the DisplayName field](/img/ravendb_channel_search.png)
+
+My .NET code could then search channels by DisplayName with a query like this:
+
+```c#
+session.Query<ChannelProfile>(@"Channels/SearchByDisplayName")
+	.Search(c => c.DisplayName, "Fritz")
+```
