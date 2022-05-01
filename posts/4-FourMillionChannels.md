@@ -1,6 +1,6 @@
 ---
 title: Milestone Reached - 4 MILLION Clips Indexed!
-draft: true
+draft: false
 publishdate: 2021-08-19T21:00
 ---
 
