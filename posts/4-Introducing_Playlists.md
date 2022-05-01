@@ -79,6 +79,8 @@ We've also added some menus on the sidebar as kabob menus that allow you to jump
 
 In August 2021, we started a long process to update the KlipTok database to [RavenDb](https://ravendb.net).  RavenDb gives KlipTok a NoSQL style storage engine, complete with full-text search and adaptive indexes.  RavenDb is such a smart database that when it sees things are running slow it builds a new index to make things FASTER.
 
+![RavenDb Cluster Topology in May 2022](img/10-RavenDbCluster.png)
+
 We're currently running KlipTok on RavenDb Cloud in an Azure datacenter on 3 nodes for redundancy.
 
 We'll publish more details about the migration to RavenDb in the weeks ahead.
