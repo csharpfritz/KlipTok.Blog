@@ -1,0 +1,63 @@
+<html><head><title>Introducing Channel Suggestions</title><base href=./../><link rel=stylesheet type=text/css href=site.css><link rel=stylesheet type=text/css href=prism.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[];gtag("js",new Date);gtag("config","G-371VNCMVCF")</script></head><body><header><div class=container><a href=./><img src=kliptok.png alt="KlipTok Logo"></a><div><h1><a href=./>KlipTok News and Notes</a></h1><h3>All the latest updates about the KlipTok application</h3></div></div></header><main><div id=sidebar><h2>Links</h2><ul><li><a href=https://kliptok.com>KlipTok</a><li><a href=https://feedback.kliptok.com>KlipTok Feedback</a><li><a href=https://github.com/csharpfritz/KlipTok.Blog>Blog source on GitHub</a><li><a href=https://github.com/csharpfritz/KlipTok.Translations>Translation Repository</a></ul><h2>KlipTok uses:</h2><ul><li><a href=https://www.telerik.com/blazor-ui>Telerik UI for Blazor</a><li><a href=https://assemblyai.com>Assembly AI transcription services</a><li><a href=https://github.com/csharpfritz/Fritz.StaticWeb>Fritz Static Web Generator</a></ul><a href="https://twitter.com/thekliptok?ref_src=twsrc%5Etfw" class=twitter-follow-button data-show-count=false>Follow @thekliptok</a><script async src=https://platform.twitter.com/widgets.js charset=utf-8></script></div><div id=main><div id=content><h1>Introducing Channel Suggestions</h1><h5>Published: 5/10/2022 21:11:00</h5><p>Our team that's been working on KlipTok has no experience with building machine learning algorithms. With some advice from friends on the <a href=https://dotnet.microsoft.com/apps/machinelearning-ai/ml-dotnet>ML.NET</a> project team, they got us pointed to a few demos that would allow us to start using the power of machine learning to make more interesting interactions with KlipTok.<p><img src=img/601-MachineLearningGeneratedSuggestedStreamers.png alt="The new suggested streamers panel on KlipTok, generated using ML.NET"><p>ML.NET makes it easy for .NET developers to build, manage, and consume machine-learning models. We believe can unlock some interesting insights from the KlipTok data using this framework.<p>In particular, we went through the <a href=https://docs.microsoft.com/dotnet/machine-learning/tutorials/movie-recommendation>"Movie Recommendation" tutorial</a> and immediately identified some changes that we could implement in KlipTok. In particular, let's use a similar technique to suggest channels based on the channels you already follow on Twitch.<p>Let me explain how we use ML.NET to recommend channels for KlipTok.<h2 id=building-a-model-to-recommend-channels>Building a model to recommend channels</h2><p>The demo in the "Movie Recommendation" tutorial analyzes ratings of movies and makes recommendations to you based on similar ratings of the same movie. We can take this concept and simplify it to the shopping cart scenario:<blockquote><p>Hey, you just put <strong>Product X</strong> in your cart and lots of folks that buy <strong>Product X</strong> also buy <strong>Product Y</strong>. Would you like to also add <strong>Product Y</strong> to your cart?</blockquote><p>Fortunately, the tutorial has a link to some sample code that covers exactly this scenario, referred to as <a href=https://github.com/dotnet/machinelearning-samples/tree/main/samples/csharp/getting-started/MatrixFactorization_ProductRecommendation>"One Class Matrix Factorization"</a>.<p>The data for this becomes very simple: we just need two fields in our records. One field contains the id of the user who is following the id of the channel in the second field. I built a small class called <code>FollowerDataForAnalysis</code><pre><code class=language-csharp>
+	public class FollowerSummaryForAnalysis
+	{
+
+		public string UserId { get; set; }
+
+		public string ChannelId { get; set; }
+
+	}
+</code></pre><p>I might have been able to create this as a C# <code>record</code> object, but I'm going to run with this class for now.<p>The ML.NET object that we use to build models and work with them is called the MLContext. In my case, I created an <code>MLContext</code> and load these <code>FollowerSummaryForAnalysis</code> data points from my database. I then configure the datapoints in the MLContext for analysis:<pre><code class=language-csharp>
+  IEnumerable&lt;FollowerSummaryForAnalysis> followersAnalysis = LoadFromDatabase();
+
+  var trainingDataView = _Context.Data.LoadFromEnumerable(followersAnalysis);
+
+  var estimator = _Context.Transforms.Conversion.MapValueToKey(outputColumnName: "userIdEncoded", inputColumnName: nameof(FollowerSummaryForAnalysis.UserId))
+    .Append(_Context.Transforms.Conversion.MapValueToKey(outputColumnName: "channelIdEncoded", inputColumnName: nameof(FollowerSummaryForAnalysis.ChannelId)));
+</code></pre><p>Next, I need to define some options for the model that will analyze the data. I'm not too sure what these data points mean, but they were recommended by the tutorial. I do know that I want it to repeat the training 3000 times in order to improve the data model.<pre><code class=language-csharp>
+  var options = new MatrixFactorizationTrainer.Options
+  {
+      MatrixColumnIndexColumnName = "userIdEncoded",
+      MatrixRowIndexColumnName = "channelIdEncoded",
+      LabelColumnName = "Followed",
+      LossFunction = MatrixFactorizationTrainer.LossFunctionType.SquareLossOneClass,
+      Alpha = 0.01,
+      Lambda = 0.025,
+      NumberOfIterations = 3000,
+      C = 0.00001,
+      Quiet = true
+  };
+
+  var trainerEstimator = estimator.Append(_Context.Recommendation().Trainers.MatrixFactorization(options));
+</code></pre><p>At this point, we can train the model with the <code>Fit</code> method on the <code>trainerEstimator</code> object:<pre><code class=language-csharp>
+_Model = trainerEstimator.Fit(trainingDataView);
+</code></pre><p>Finally, I save the model into a <code>Stream</code> object that persists my model into Azure Blob storage so that it can be used in Azure Functions for the KlipTok API.<pre><code class=language-csharp>
+_Context.Model.Save(_Model, trainingDataView.Schema, destinationStream);
+</code></pre><p>I currently have this model generation and save operation running once a day.<h2 id=loading-the-model-and-serving-up-predictions>Loading the model and serving up predictions</h2><p>The model can be loaded into a <code>PredictionEngine</code> to predict a potential channel suggestion for a user. In order to deliver that, we need to run predictions for a collection of candidate channels. KlipTok will look at the 200 channels that most recently created clips and run those through the <code>PredictionEngine</code> for the logged in user and present a subset of 4 channels to suggest on the sidebar of KlipTok's user interface.<p>To enable the prediction engine to run faster, I have configured a <code>PredictionEnginePool</code> that will reuse resources and allow predictions to run significantly faster. In testing on my local machine, it can run 200 predictions in less than 20ms.<p>I added the following line to <code>Startup.cs</code> in my Azure Functions project to enable the pooling mechanism:<pre><code class=language-csharp>  services.AddPredictionEnginePool&lt;FollowerSummaryForAnalysis,ChannelPrediction>()
+    .FromUri(
+      uri: "https://myblobstorage.blob.core.windows.net/channelDiscoveryModel.zip",
+      period: TimeSpan.FromMinutes(30)
+    );</code></pre><p>This tells the prediction engine to attempt to reload the model from disk every 30 minutes.<p>With the engine loaded, I can run predictions with this code:<pre><code class=language-csharp>public IEnumerable<suggestedstreamer> SuggestChannels(string userId, IEnumerable<channelprofile> candidateChannels, int maxCount)
+{
+
+  var outList = new List<suggestedstreamer>();
+
+  foreach (var channel in candidateChannels)
+  {
+
+    var input = new FollowerSummaryForAnalysis()
+    {
+      UserId = userId,
+      ChannelId = channel.ChannelId
+    };
+
+    var score = _PredictionEngine?.Predict(input) ?? _PredictionEnginePool.Predict(input);
+    outList.Add(new SuggestedStreamer
+    {
+      DisplayName = channel.DisplayName,
+      ProfilePicUrl = channel.ProfilePicUrl,
+      TwitchUserId = channel.ChannelId,
+      Score = (decimal)Math.Round(score.Score, 5)
+    });
+  }
+}</suggestedstreamer></channelprofile></suggestedstreamer></code></pre><p>After this is fetched, we only transmit 20 channels to the browser. The user interface will remove any channels that are muted and take a random subset of 4 channels to present in the sidebar.<h2 id=summary>Summary</h2><p>I was really happy with how easy it was to adapt a tutorial for ML.NET and get some relevant recommandations for the KlipTok application. In the future, we'd like to use this technique to also recommend clips to visitors.<h5><a href=/blog>Back to front page</a></h5></div></div></main><footer>Copyright ©2021 KlipTok Inc.</footer><script src=prism.js></script></body></html>
