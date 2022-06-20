@@ -1,1 +1,92 @@
-<html><head><title>Welcome to KlipTok!</title><base href=./../><link rel=stylesheet type=text/css href=site.css><link rel=stylesheet type=text/css href=prism.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[];gtag("js",new Date);gtag("config","G-371VNCMVCF")</script></head><body><header><div class=container><a href=./><img src=kliptok.png alt="KlipTok Logo"></a><div><h1><a href=./>KlipTok News and Notes</a></h1><h3>All the latest updates about the KlipTok application</h3></div></div></header><main><div id=sidebar><h2>Links</h2><ul><li><a href=https://kliptok.com>KlipTok</a><li><a href=https://feedback.kliptok.com>KlipTok Feedback</a><li><a href=https://github.com/csharpfritz/KlipTok.Blog>Blog source on GitHub</a><li><a href=https://github.com/csharpfritz/KlipTok.Translations>Translation Repository</a></ul><h2>KlipTok uses:</h2><ul><li><a href=https://www.telerik.com/blazor-ui>Telerik UI for Blazor</a><li><a href=https://assemblyai.com>Assembly AI transcription services</a><li><a href=https://github.com/csharpfritz/Fritz.StaticWeb>Fritz Static Web Generator</a></ul><a href="https://twitter.com/thekliptok?ref_src=twsrc%5Etfw" class=twitter-follow-button data-show-count=false>Follow @thekliptok</a><script async src=https://platform.twitter.com/widgets.js charset=utf-8></script></div><div id=main><div id=content><h1>Welcome to KlipTok!</h1><h5>Published: 7/24/2021 14:22:00</h5><p>This is our first post on the KlipTok blog, and I'm thrilled to have this live for folks to learn more about how KlipTok is built and to allow us to announce new features as well as milestones reached. I'll have a few more posts today and later this week talking about what KlipTok is, how it was built, and how you can participate.<h2 id=how-it-started>How it started</h2><p>KlipTok has been built by a Twitch Streamer, for Twitch Streamers, LIVE on Twitch. It started in November 2020 as an idea to help make Twitch clips more discoverable with a UI that brought your favorite clips from the channels you follow. That 12-hour stream is archived and available:<div style=width:100%;text-align:center><iframe width=560 height=315 src="https://www.youtube.com/embed/6uMCAHEM8Es?start=310" title="YouTube video player" frameborder=0 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe></div><p>The technical goal of this web application was to build a complete site using the <a href=https://blazor.net>Blazor web framework</a> with <a href=https://dot.net>C# and .NET 5</a> running completely on <a href=https://azure.microsoft.com>Microsoft Azure</a>. We use Azure Static Websites to make that happen along with a number of other Microsoft Azure services, and we'll cover more of that in an upcoming blog post.<h2 id=fast-forward-to-today>Fast Forward to Today</h2><p>At the time of the writing of this blog post (at the end of July 2021), we're about 8 months into the evolution of the site and it hosts about 680 channels clips. There are more than 3.1 million clips that KlipTok has indexed and are available for you to discover.<p>We've added the ability for the site to be translated to a number of different languages with the help of our KlipTok community. The translations are all available in JSON format <a href=https://github.com/csharpfritz/KlipTok.Translations>on GitHub</a> and you are welcome to contribute new or missing translations.<p>Viewer and user feedback is VERY important to me in the construction of KlipTok, and I've configured a user feedback website using <a href=https://getfider.com>Fider</a>. You can see the requested features and my notes about the next features that are going to be built at <a href=https://feedback.kliptok.com>https://feedback.kliptok.com</a><p>I'm writing a handful of posts to get things started here to describe some of the direction behind the site, the tenets we follow as development progresses, and the Azure-based architecture used.<p>I hope to separate the Blazor application into its own repository and release the UI as an open source project before the end of July 2021. In this way, you can learn from how the application was written and even contribute back some updates to improve the user-interface.<h2 id=one-more-thing>One more thing...</h2><p>I've added an amazing feature to KlipTok with the help of the folks at <a href=https://assemblyai.com>Assembly AI</a> to provide transcription for clips. This means you can search for clips based on what was SAID in the clip, not just the title of the clip. This is the ONLY video sharing service on the internet that provides this service, and we have much more planned with our friends at Assembly AI.<h2 id=summary>Summary</h2><p>So.. welcome to KlipTok! I'm looking forward to building much more for this web application and learning about how to use many more cloud services and taking advantage of the coolest new .NET technologies to grow it and make it an application you find useful.<h5><a href=/blog>Back to front page</a></h5></div></div></main><footer>Copyright ©2021 KlipTok Inc.</footer><script src=prism.js></script></body></html>
+<html>
+	<head>
+		<title>Welcome to KlipTok!</title>
+		<base href="./../">
+		<link rel="stylesheet" type="text/css" href="site.css">
+		<link rel="stylesheet" type="text/css" href="prism.css">
+
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-371VNCMVCF');
+		</script>		
+	</head>
+	<body>
+
+		<header>
+			<div class="container">
+				<a href="./"><img src="kliptok.png" alt="KlipTok Logo" /></a>
+				<div>
+					<h1><a href="./">KlipTok News and Notes</a></h1>
+					<h3>All the latest updates about the KlipTok application</h3>
+				</div>
+			</div>
+		</header>
+
+		<main>
+
+			<div id="sidebar">
+				
+				<h2>Links</h2>
+				<ul>	
+					<li><a href="https://kliptok.com">KlipTok</a></li>
+					<li><a href="https://feedback.kliptok.com">KlipTok Feedback</a></li>
+					<li><a href="https://github.com/csharpfritz/KlipTok.Blog">Blog source on GitHub</a></li>
+					<li><a href="https://github.com/csharpfritz/KlipTok.Translations">Translation Repository</a></li>
+				</ul>
+
+				<h2>KlipTok uses:</h2>
+				<ul>
+					<li><a href="https://www.telerik.com/blazor-ui">Telerik UI for Blazor</a></li>
+					<li><a href="https://assemblyai.com">Assembly AI transcription services</a></li>
+					<li><a href="https://github.com/csharpfritz/Fritz.StaticWeb">Fritz Static Web Generator</a></li>
+				</ul>
+
+				<a href="https://twitter.com/thekliptok?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @thekliptok</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+			</div>
+
+			<div id="main">
+
+				<div id="content">
+
+					<h1>Welcome to KlipTok!</h1>
+					<h5>Published: 7/24/2021 14:22:00</h5>
+			
+					<p>This is our first post on the KlipTok blog, and I'm thrilled to have this live for folks to learn more about how KlipTok is built and to allow us to announce new features as well as milestones reached.  I'll have a few more posts today and later this week talking about what KlipTok is, how it was built, and how you can participate.</p>
+<h2 id="how-it-started">How it started</h2>
+<p>KlipTok has been built by a Twitch Streamer, for Twitch Streamers, LIVE on Twitch.  It started in November 2020 as an idea to help make Twitch clips more discoverable with a UI that brought your favorite clips from the channels you follow.  That 12-hour stream is archived and available:</p>
+<div style="width: 100%; text-align: center;">
+<iframe width="560" height="315"  src="https://www.youtube.com/embed/6uMCAHEM8Es?start=310" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+<p>The technical goal of this web application was to build a complete site using the <a href="https://blazor.net">Blazor web framework</a> with <a href="https://dot.net">C# and .NET 5</a> running completely on <a href="https://azure.microsoft.com">Microsoft Azure</a>.  We use Azure Static Websites to make that happen along with a number of other Microsoft Azure services, and we'll cover more of that in an upcoming blog post.</p>
+<h2 id="fast-forward-to-today">Fast Forward to Today</h2>
+<p>At the time of the writing of this blog post (at the end of July 2021), we're about 8 months into the evolution of the site and it hosts about 680 channels clips.  There are more than 3.1 million clips that KlipTok has indexed and are available for you to discover.</p>
+<p>We've added the ability for the site to be translated to a number of different languages with the help of our KlipTok community.  The translations are all available in JSON format <a href="https://github.com/csharpfritz/KlipTok.Translations">on GitHub</a> and you are welcome to contribute new or missing translations.</p>
+<p>Viewer and user feedback is VERY important to me in the construction of KlipTok, and I've configured a user feedback website using <a href="https://getfider.com">Fider</a>.  You can see the requested features and my notes about the next features that are going to be built at <a href="https://feedback.kliptok.com">https://feedback.kliptok.com</a></p>
+<p>I'm writing a handful of posts to get things started here to describe some of the direction behind the site, the tenets we follow as development progresses, and the Azure-based architecture used.</p>
+<p>I hope to separate the Blazor application into its own repository and release the UI as an open source project before the end of July 2021.  In this way, you can learn from how the application was written and even contribute back some updates to improve the user-interface.</p>
+<h2 id="one-more-thing">One more thing...</h2>
+<p>I've added an amazing feature to KlipTok with the help of the folks at <a href="https://assemblyai.com">Assembly AI</a> to provide transcription for clips.  This means you can search for clips based on what was SAID in the clip, not just the title of the clip.  This is the ONLY video sharing service on the internet that provides this service, and we have much more planned with our friends at Assembly AI.</p>
+<h2 id="summary">Summary</h2>
+<p>So.. welcome to KlipTok!  I'm looking forward to building much more for this web application and learning about how to use many more cloud services and taking advantage of the coolest new .NET technologies to grow it and make it an application you find useful.</p>
+
+
+					<h5><a href="/blog">Back to front page</a></h5>
+
+				</div>	
+
+			</div>
+
+		</main>
+
+		<footer>Copyright &copy;2021 KlipTok Inc.</footer>
+
+		<script src="prism.js"></script>
+	</body>
+</html>
