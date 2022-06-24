@@ -50,12 +50,12 @@ This lets me run the following query in C# against our [RavenDb database](https:
 
 ```csharp
 using var session = Store.OpenAsyncSession();
-var followRecord = await session.LoadAsync<FollowerRecord>(
+var followRecord = await session.LoadAsync&lt;FollowerRecord&gt;(
     "Followers/96909659",
     i => i.IncludeDocuments(f => f.ChannelIds)
 );
 
-var followedChannels = await session.LoadAsync<ChannelProfile>(followRecord.ChannelIds);
+var followedChannels = await session.LoadAsync&lt;ChannelProfile&gt;(followRecord.ChannelIds);
 ```
 
 The first query loads identifies the record in the `FollowRecords` collection immediately as it is loading that record using a document id.  In a relational database, you would call the document id a primary key.  The include of the ChannelIds using the `IncludeDocuments` method will fetch all of the `ChannelProfile` records into .NET memory that are referenced in the `ChannelIds` property.  In the case of our sample data above, we load 4 `ChannelProfile` records at the same time as the `FollowRecord` object from RavenDb into .NET memory.
@@ -82,19 +82,19 @@ We can now use a similar query to fetch the profiles of those pinned channels.
 
 ```csharp
 using var session = Store.OpenAsyncSession();
-var followRecord = await session.LoadAsync<FollowerRecord>(
+var followRecord = await session.LoadAsync&lt;FollowerRecord&gt;(
     "Followers/96909659",
     i => i.IncludeDocuments(f => f.PinnedChannelIds)
 );
 
-var pinnedChannels = await session.LoadAsync<ChannelProfile>(followRecord.PinnedChannelIds);
+var pinnedChannels = await session.LoadAsync&lt;ChannelProfile&gt;(followRecord.PinnedChannelIds);
 ```
 
 Easy...  and we can update the `PinnedChannelIds` collection with a simple *Patch* command:
 
 ```csharp
 followRecord.PinnedChannelIds = new string[] { "Channels/148746662", "Channels/221740520" };
-session.Advanced.Patch<FollowerRecord, IEnumerable<string>>(
+session.Advanced.Patch&lt;FollowerRecord, IEnumerable&lt;string&gt;&gt;(
     "Followers/96909659",
     f => f.PinnedChannelIds,
     newPinned);
