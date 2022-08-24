@@ -3,6 +3,7 @@ title: 16M Clips, 2M channels, Categories and Teams arrive on KlipTok
 draft: false
 publishdate: 2022-08-24T11:30:58.3141389-04:00
 description: "We're announcing two new features on KlipTok this week: Category pages and Twitch Teams"
+preview: "img/0805-TeamPage.png"
 ---
 
 We hit two large data milestones this month, 16 million clips indexed and more than 2 million channels are now known by KlipTok.  It's a huge step in the growth of the application, and we want to thank all of our supporters for helping spread the word about KlipTok.
