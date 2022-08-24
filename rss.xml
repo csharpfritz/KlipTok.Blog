@@ -4,14 +4,22 @@
 <link>https://kliptok.com/blog</link>
 <description>News and notes about the KlipTok web application.  KlipTok makes Twitch clips and videos easy to search, discover, and share them with friends.</description>
 <language>en-us</language>
-<lastBuildDate>Thu, 30 Jun 2022 16:49:01 GMT</lastBuildDate>
+<lastBuildDate>Wed, 24 Aug 2022 15:24:25 GMT</lastBuildDate>
 <ttl>60</ttl>
 <copyright>Copyright 2022 KlipTok LLC</copyright>
 <managingEditor>jeff@jeffreyfritz.com</managingEditor>
 <webMaster>jeff@jeffreyfritz.com</webMaster>
-<pubDate>Thu, 30 Jun 2022 16:49:01 GMT</pubDate>
+<pubDate>Wed, 24 Aug 2022 15:24:25 GMT</pubDate>
 <docs>http://blogs.law.harvard.edu/tech/rss</docs>
 <generator>Fritz.StaticWeb</generator>
+<item>
+<title>16M Clips, 2M channels, Categories and Teams arrive on KlipTok</title>
+<link>https://kliptok.com/blog/posts/posts/8-CategoriesAndTeams.html</link>
+<description><p>We hit two large data milestones this month, 16 million clips indexed and more than 2 million channels are now known by KlipTok.  It's a huge step in the growth of the application, and we want to thank all of our supporters for helping spread the word about KlipTok.</p>
+<p>After a few weeks of work, we're delivering two heavily requests sets of pages and content to KlipTok: Categories and Teams.</p></description>
+<pubDate>Wed, 24 Aug 2022 11:30:58 GMT</pubDate>
+<guid>https://kliptok.com/blog/posts/posts/8-CategoriesAndTeams.html</guid>
+</item>
 <item>
 <title>Pin Channels and Performance Updates</title>
 <link>https://kliptok.com/blog/posts/posts/7-PinChannels.html</link>
