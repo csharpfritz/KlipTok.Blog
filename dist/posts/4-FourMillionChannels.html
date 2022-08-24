@@ -1,1 +1,95 @@
-<html><head><title>Milestone Reached - 4 MILLION Clips Indexed!</title><base href=./../><link rel=stylesheet type=text/css href=site.css><link rel=stylesheet type=text/css href=prism.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[];gtag("js",new Date);gtag("config","G-371VNCMVCF")</script><meta property=og:title content="Milestone Reached - 4 MILLION Clips Indexed!"><meta property=og:description content=""><meta property=og:image content=""><meta property=og:type content=website><meta property=fb:app_id content=""><meta name=twitter:card content=summary_large_image><meta name=twitter:title content="Milestone Reached - 4 MILLION Clips Indexed!"><meta name=twitter:description content=""><meta name=twitter:image content=""></head><body><header><div class=container><a href=./><img src=kliptok.png alt="KlipTok Logo"></a><div><h1><a href=./>KlipTok News and Notes</a></h1><h3>All the latest updates about the KlipTok application</h3></div></div></header><main><div id=sidebar><h2>Links</h2><ul><li><a href=https://kliptok.com>KlipTok</a><li><a href=https://feedback.kliptok.com>KlipTok Feedback</a><li><a href=https://github.com/csharpfritz/KlipTok.Blog>Blog source on GitHub</a><li><a href=https://github.com/csharpfritz/KlipTok.Translations>Translation Repository</a></ul><h2>KlipTok uses:</h2><ul><li><a href=https://www.telerik.com/blazor-ui>Telerik UI for Blazor</a><li><a href=https://assemblyai.com>Assembly AI transcription services</a><li><a href=https://github.com/csharpfritz/Fritz.StaticWeb>Fritz Static Web Generator</a></ul><a href="https://twitter.com/thekliptok?ref_src=twsrc%5Etfw" class=twitter-follow-button data-show-count=false>Follow @thekliptok</a><script async src=https://platform.twitter.com/widgets.js charset=utf-8></script></div><div id=main><div id=content><h1>Milestone Reached - 4 MILLION Clips Indexed!</h1><h5>Published: 8/19/2021 21:00:00</h5><p>KlipTok just crossed another major milestone on the evening of August 18th:<div class=center><p><img src=img/4million.PNG alt="4 million clips on the KlipTok dashboard"></div><p>We're now service more than 4 million klips for about 750 Twitch channels with more than 11k transcriptions. It's a huge step, and is stored on about 10GB of storage for the database and search indexes.<h2 id=how-are-those-4-million-clips-stored-and-indexed>How are those 4 million clips stored and indexed?</h2><p>The clips are stored in a MySql database hosted on Microsoft Azure that allows us to join in and query based on the channel id or the unique 'slug' text that identifies the clip.<p>There are entries in <a href=https://azure.microsoft.com/services/storage/tables/>Azure Table Storage</a> for the titles of the clips and the transcriptions of the clips. This table storage is further indexed by <a href=https://azure.microsoft.com/services/search/>Azure Cognitive Search</a> so that you can search for clips based on the title of the clip or the words spoken in the clip.<p>I use <a href=https://azure.microsoft.com/services/service-bus/>Azure Service Bus</a> to process all of these records as they arrive from Twitch, get processed by AssemblyAI for transcripts, and store the clip data for processing and search indexing.<p>That's... that's a lot of storage to manage and indexes to update. What if we could make that a lot more concise and simpler?<h2 id=enter-ravendb>Enter RavenDb</h2><p>Starting next week, we're going to start migrating data to RavenDb. <a href=https://ravendb.net>RavenDb</a> is a NoSQL database provider that has a bunch of smart features built into it that allow it to detect and build indexes appropriately for our queries. It also has a built in search indexing feature that allows us to generate a search index and search fields in document records.<p>Additionally, I have found and witnessed a few demos that show how to build an elementary recommendation engine using RavenDb queries. When I saw these demos, I was sold on being able to build and roll out a better list of recommended channels and clips to discover on the front page of KlipTok.<p>RavenDb feels like a perfect match for the various ways that we store and interact with clip data for KlipTok. I hope you tune in to the <a href=https://twitch.tv/csharpfritz>csharpfritz Twitch stream</a> in the week ahead as I migrate and roll out this update.<h5><a href=/blog>Back to front page</a></h5></div></div></main><footer>Copyright ©2021, 2022 KlipTok Inc.</footer><script src=prism.js></script></body></html>
+<html>
+	<head>
+		<title>Milestone Reached - 4 MILLION Clips Indexed!</title>
+		<base href="./../">
+		<link rel="stylesheet" type="text/css" href="site.css">
+		<link rel="stylesheet" type="text/css" href="prism.css">
+
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-371VNCMVCF');
+		</script>		
+	<meta property="og:title" content="Milestone Reached - 4 MILLION Clips Indexed!">
+<meta property="og:description" content="" >
+<meta property="og:image" content=""><meta property="og:type" content="website"><meta property="fb:app_id" content="">	<meta name="twitter:card" content="summary_large_image">
+	<meta name="twitter:title" content="Milestone Reached - 4 MILLION Clips Indexed!">
+	<meta name="twitter:description" content="">
+	<meta name="twitter:image" content="">
+</head>
+	<body>
+
+		<header>
+			<div class="container">
+				<a href="./"><img src="kliptok.png" alt="KlipTok Logo" /></a>
+				<div>
+					<h1><a href="./">KlipTok News and Notes</a></h1>
+					<h3>All the latest updates about the KlipTok application</h3>
+				</div>
+			</div>
+		</header>
+
+		<main>
+
+			<div id="sidebar">
+				
+				<h2>Links</h2>
+				<ul>	
+					<li><a href="https://kliptok.com">KlipTok</a></li>
+					<li><a href="https://feedback.kliptok.com">KlipTok Feedback</a></li>
+					<li><a href="https://github.com/csharpfritz/KlipTok.Blog">Blog source on GitHub</a></li>
+					<li><a href="https://github.com/csharpfritz/KlipTok.Translations">Translation Repository</a></li>
+				</ul>
+
+				<h2>KlipTok uses:</h2>
+				<ul>
+					<li><a href="https://www.telerik.com/blazor-ui">Telerik UI for Blazor</a></li>
+					<li><a href="https://assemblyai.com">Assembly AI transcription services</a></li>
+					<li><a href="https://github.com/csharpfritz/Fritz.StaticWeb">Fritz Static Web Generator</a></li>
+				</ul>
+
+				<a href="https://twitter.com/thekliptok?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @thekliptok</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+
+			</div>
+
+			<div id="main">
+
+				<div id="content">
+
+					<h1>Milestone Reached - 4 MILLION Clips Indexed!</h1>
+					<h5>Published: 8/19/2021 21:00:00</h5>
+			
+					<p>KlipTok just crossed another major milestone on the evening of August 18th:</p>
+<div class="center">
+<p><img src="img/4million.PNG" alt="4 million clips on the KlipTok dashboard" /></p>
+</div>
+<p>We're now service more than 4 million klips for about 750 Twitch channels with more than 11k transcriptions.  It's a huge step, and is stored on about 10GB of storage for the database and search indexes.</p>
+<h2 id="how-are-those-4-million-clips-stored-and-indexed">How are those 4 million clips stored and indexed?</h2>
+<p>The clips are stored in a MySql database hosted on Microsoft Azure that allows us to join in and query based on the channel id or the unique 'slug' text that identifies the clip.</p>
+<p>There are entries in <a href="https://azure.microsoft.com/services/storage/tables/">Azure Table Storage</a> for the titles of the clips and the transcriptions of the clips.  This table storage is further indexed by <a href="https://azure.microsoft.com/services/search/">Azure Cognitive Search</a> so that you can search for clips based on the title of the clip or the words spoken in the clip.</p>
+<p>I use <a href="https://azure.microsoft.com/services/service-bus/">Azure Service Bus</a> to process all of these records as they arrive from Twitch, get processed by AssemblyAI for transcripts, and store the clip data for processing and search indexing.</p>
+<p>That's... that's a lot of storage to manage and indexes to update.  What if we could make that a lot more concise and simpler?</p>
+<h2 id="enter-ravendb">Enter RavenDb</h2>
+<p>Starting next week, we're going to start migrating data to RavenDb.  <a href="https://ravendb.net">RavenDb</a> is a NoSQL database provider that has a bunch of smart features built into it that allow it to detect and build indexes appropriately for our queries.  It also has a built in search indexing feature that allows us to generate a search index and search fields in document records.</p>
+<p>Additionally, I have found and witnessed a few demos that show how to build an elementary recommendation engine using RavenDb queries.  When I saw these demos, I was sold on being able to build and roll out a better list of recommended channels and clips to discover on the front page of KlipTok.</p>
+<p>RavenDb feels like a perfect match for the various ways that we store and interact with clip data for KlipTok.  I hope you tune in to the <a href="https://twitch.tv/csharpfritz">csharpfritz Twitch stream</a> in the week ahead as I migrate and roll out this update.</p>
+
+
+					<h5><a href="/blog">Back to front page</a></h5>
+
+				</div>	
+
+			</div>
+
+		</main>
+
+		<footer>Copyright &copy;2021 - 2022 KlipTok Inc.</footer>
+
+		<script src="prism.js"></script>
+	</body>
+</html>
