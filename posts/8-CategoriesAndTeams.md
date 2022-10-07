@@ -1,5 +1,6 @@
 ---
 title: 16M Clips, 2M channels, Categories and Teams arrive on KlipTok
+author: Jeff Fritz
 draft: false
 publishdate: 2022-08-24T11:30:58.3141389-04:00
 description: "We're announcing two new features on KlipTok this week: Category pages and Twitch Teams"

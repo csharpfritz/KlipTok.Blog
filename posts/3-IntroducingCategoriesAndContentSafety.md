@@ -1,5 +1,6 @@
 ---
 title: Version 0.23 - Introducing IAB Categories and Content Safety
+author: Jeff Fritz
 draft: false
 publishdate: 2021-08-14T14:15
 ---

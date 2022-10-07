@@ -1,5 +1,6 @@
 ---
 title: Pin Channels and Performance Updates
+author: Jeff Fritz
 draft: false
 publishdate: 2022-06-19T09:11:32.1193557-04:00
 ---
