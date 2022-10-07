@@ -1,104 +1,17 @@
-<html>
-	<head>
-		<title>Pin Channels and Performance Updates</title>
-		<base href="./../">
-		<link rel="stylesheet" type="text/css" href="site.css">
-		<link rel="stylesheet" type="text/css" href="prism.css">
-
-
-		<!-- Global site tag (gtag.js) - Google Analytics -->
-		<script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script>
-		<script>
-			window.dataLayer = window.dataLayer || [];
-			function gtag(){dataLayer.push(arguments);}
-			gtag('js', new Date());
-
-			gtag('config', 'G-371VNCMVCF');
-		</script>		
-	<meta property="og:title" content="Pin Channels and Performance Updates">
-<meta property="og:description" content="" >
-<meta property="og:image" content=""><meta property="og:type" content="website"><meta property="fb:app_id" content="">	<meta name="twitter:card" content="summary_large_image">
-	<meta name="twitter:title" content="Pin Channels and Performance Updates">
-	<meta name="twitter:description" content="">
-	<meta name="twitter:image" content="">
-</head>
-	<body>
-
-		<header>
-			<div class="container">
-				<a href="./"><img src="kliptok.png" alt="KlipTok Logo" /></a>
-				<div>
-					<h1><a href="./">KlipTok News and Notes</a></h1>
-					<h3>All the latest updates about the KlipTok application</h3>
-				</div>
-			</div>
-		</header>
-
-		<main>
-
-			<div id="sidebar">
-				
-				<h2>Links</h2>
-				<ul>	
-					<li><a href="https://kliptok.com">KlipTok</a></li>
-					<li><a href="https://feedback.kliptok.com">KlipTok Feedback</a></li>
-					<li><a href="https://github.com/csharpfritz/KlipTok.Blog">Blog source on GitHub</a></li>
-					<li><a href="https://github.com/csharpfritz/KlipTok.Translations">Translation Repository</a></li>
-				</ul>
-
-				<h2>KlipTok uses:</h2>
-				<ul>
-					<li><a href="https://www.telerik.com/blazor-ui">Telerik UI for Blazor</a></li>
-					<li><a href="https://assemblyai.com">Assembly AI transcription services</a></li>
-					<li><a href="https://github.com/csharpfritz/Fritz.StaticWeb">Fritz Static Web Generator</a></li>
-				</ul>
-
-				<a href="https://twitter.com/thekliptok?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @thekliptok</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-
-			</div>
-
-			<div id="main">
-
-				<div id="content">
-
-					<h1>Pin Channels and Performance Updates</h1>
-					<h5>Published: 6/19/2022 09:11:32</h5>
-			
-					<p>The &quot;secret sauce&quot; of KlipTok has been that it is a service for streamers, written by a streamer, live on stream. This week, we added a new wrinkle to that mix.  We added a feauture requested by viewers, designed by viewers.</p>
-<h2 id="pin-channels-to-the-sidebar">Pin Channels to the Sidebar</h2>
-<p>On Tuesday the 14th, we received <a href="https://feedback.kliptok.com/posts/109/add-feature-pinned-streamers">a feedback entry for the most requested feature</a> to date for KlipTok:  Pin Channels to the sidebar.</p>
-<p><a href="https://feedback.kliptok.com/posts/109/add-feature-pinned-streamers"><img src="img/7_1-Feedback.png" alt="Feedback entry for Pin Channels" /></a></p>
-<p>It's an idea that makes sense: allow viewers to pin their favorite 3 channels to the sidebar so that they can quickly jump to those channels.  The last part of the request, add these channels to the front page of KlipTok, is a little more complicated and not delivered yet.</p>
-<p>You can now find the <strong>Pin Channel</strong> feature in the <em>kabob menu</em> on the sidebar and with the pin icon in the header of every channel on KlipTok.  You can pin a channel and unpin channels with these two buttons.</p>
-<p><img src="img/7_2-pinned.png" alt="Pinned channels on the sidebar with the context menu to unpin" /></p>
-<p><img src="img/7_3-pin-header.png" alt="Pin icon in the header of the streamer page" /></p>
-<p>We're evaluating and preparing to add the last requirement of this feature, the 'missed clips on homepage'</p>
-<h2 id="performance-updates">Performance Updates</h2>
-<p>Additionally, we tuned the interactions the sidebar and streamer pages were having with the database services.  For the sidebar, we moved queries for the sections to a parallel request model.  On streamer pages, we tuned the interaction the clip list component was using so that it no longer blocks rendering and makes 1 less request to the database service for content.</p>
-<p>Another update that didn't make a significant change in performance for this feature, but I want to highlight was the conversion of the pin action from an update to a patch.  Before I explain the difference, let's take a look at how the new <strong>Pinned Channels</strong> feature is stored in the database.</p>
-<h2 id="pinned-channels-data-schema">Pinned Channels data schema</h2>
-<p>Pinned channels are a feature that only logged in users can use.  As such, those logged in users also have a collections of channels the follow on Twitch that are maintained in the KlipTok database.  By Twitch's definition, a <a href="https://blog.twitch.tv/en/2013/03/26/on-channel-following-limits-33997332dd34/">user can follow up to 2000 channels on the Twitch service</a>.</p>
-<p>In KlipTok, we store that collection of channels so that each user has 1 document with the channels they follow stored in an array like so:</p>
-<pre><code class="language-json">{
+<html><head><title>Pin Channels and Performance Updates</title><base href=./../><link rel=stylesheet type=text/css href=site.css><link rel=stylesheet type=text/css href=prism.css><script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script><script>function gtag(){dataLayer.push(arguments)}window.dataLayer=window.dataLayer||[];gtag("js",new Date);gtag("config","G-371VNCMVCF")</script><meta property=og:title content="Pin Channels and Performance Updates"><meta property=og:description content=""><meta property=og:image content=""><meta property=og:type content=website><meta property=fb:app_id content=""><meta name=twitter:card content=summary_large_image><meta name=twitter:title content="Pin Channels and Performance Updates"><meta name=twitter:description content=""><meta name=twitter:image content=""></head><body><header><div class=container><a href=./><img src=kliptok.png alt="KlipTok Logo"></a><div><h1><a href=./>KlipTok News and Notes</a></h1><h3>All the latest updates about the KlipTok application</h3></div></div></header><main><div id=sidebar><h2>Links</h2><ul><li><a href=https://kliptok.com>KlipTok</a><li><a href=https://feedback.kliptok.com>KlipTok Feedback</a><li><a href=https://github.com/csharpfritz/KlipTok.Blog>Blog source on GitHub</a><li><a href=https://github.com/csharpfritz/KlipTok.Translations>Translation Repository</a><li><a href=archive.html>All Posts</a></ul><h2>KlipTok uses:</h2><ul><li><a href=https://www.telerik.com/blazor-ui>Telerik UI for Blazor</a><li><a href=https://assemblyai.com>Assembly AI transcription services</a><li><a href=https://github.com/csharpfritz/Fritz.StaticWeb>Fritz Static Web Generator</a></ul><a href="https://twitter.com/thekliptok?ref_src=twsrc%5Etfw" class=twitter-follow-button data-show-count=false>Follow @thekliptok</a><script async src=https://platform.twitter.com/widgets.js charset=utf-8></script></div><div id=main><div id=content><h1>Pin Channels and Performance Updates</h1><h3>Written by: Jeff Fritz</h3><h5>Published: 6/19/2022 09:11:32</h5><p>The "secret sauce" of KlipTok has been that it is a service for streamers, written by a streamer, live on stream. This week, we added a new wrinkle to that mix. We added a feauture requested by viewers, designed by viewers.<h2 id=pin-channels-to-the-sidebar>Pin Channels to the Sidebar</h2><p>On Tuesday the 14th, we received <a href=https://feedback.kliptok.com/posts/109/add-feature-pinned-streamers>a feedback entry for the most requested feature</a> to date for KlipTok: Pin Channels to the sidebar.<p><a href=https://feedback.kliptok.com/posts/109/add-feature-pinned-streamers><img src=img/7_1-Feedback.png alt="Feedback entry for Pin Channels"></a><p>It's an idea that makes sense: allow viewers to pin their favorite 3 channels to the sidebar so that they can quickly jump to those channels. The last part of the request, add these channels to the front page of KlipTok, is a little more complicated and not delivered yet.<p>You can now find the <strong>Pin Channel</strong> feature in the <em>kabob menu</em> on the sidebar and with the pin icon in the header of every channel on KlipTok. You can pin a channel and unpin channels with these two buttons.<p><img src=img/7_2-pinned.png alt="Pinned channels on the sidebar with the context menu to unpin"><p><img src=img/7_3-pin-header.png alt="Pin icon in the header of the streamer page"><p>We're evaluating and preparing to add the last requirement of this feature, the 'missed clips on homepage'<h2 id=performance-updates>Performance Updates</h2><p>Additionally, we tuned the interactions the sidebar and streamer pages were having with the database services. For the sidebar, we moved queries for the sections to a parallel request model. On streamer pages, we tuned the interaction the clip list component was using so that it no longer blocks rendering and makes 1 less request to the database service for content.<p>Another update that didn't make a significant change in performance for this feature, but I want to highlight was the conversion of the pin action from an update to a patch. Before I explain the difference, let's take a look at how the new <strong>Pinned Channels</strong> feature is stored in the database.<h2 id=pinned-channels-data-schema>Pinned Channels data schema</h2><p>Pinned channels are a feature that only logged in users can use. As such, those logged in users also have a collections of channels the follow on Twitch that are maintained in the KlipTok database. By Twitch's definition, a <a href=https://blog.twitch.tv/en/2013/03/26/on-channel-following-limits-33997332dd34/>user can follow up to 2000 channels on the Twitch service</a>.<p>In KlipTok, we store that collection of channels so that each user has 1 document with the channels they follow stored in an array like so:<pre><code class=language-json>{
    "ChannelIds": [
       "Channels/102402222",
       "Channels/32402099",
       "Channels/63208102",
       "Channels/52093029"
    ]
-}</code></pre>
-<p>This lets me run the following query in C# against our <a href="https://ravendb.net">RavenDb database</a> to return the collection of Channels that a user follows:</p>
-<pre><code class="language-csharp">using var session = Store.OpenAsyncSession();
-var followRecord = await session.LoadAsync&lt;FollowerRecord&gt;(
+}</code></pre><p>This lets me run the following query in C# against our <a href=https://ravendb.net>RavenDb database</a> to return the collection of Channels that a user follows:<pre><code class=language-csharp>using var session = Store.OpenAsyncSession();
+var followRecord = await session.LoadAsync&lt;FollowerRecord>(
     "Followers/96909659",
     i => i.IncludeDocuments(f => f.ChannelIds)
 );
 
-var followedChannels = await session.LoadAsync&lt;ChannelProfile&gt;(followRecord.ChannelIds);</code></pre>
-<p>The first query loads identifies the record in the <code>FollowRecords</code> collection immediately as it is loading that record using a document id.  In a relational database, you would call the document id a primary key.  The include of the ChannelIds using the <code>IncludeDocuments</code> method will fetch all of the <code>ChannelProfile</code> records into .NET memory that are referenced in the <code>ChannelIds</code> property.  In the case of our sample data above, we load 4 <code>ChannelProfile</code> records at the same time as the <code>FollowRecord</code> object from RavenDb into .NET memory.</p>
-<p>The final query that populates the <code>followedChannels</code> variable from those <code>ChannelProfile</code> objects already stored in memory.</p>
-<p>To add the <em>PinnedChannels</em> feature, we simply added another collection of ChannelIds to the <code>FollowRecord</code> object.  This means that sample data from above now looks like the following:</p>
-<pre><code class="language-json">{
+var followedChannels = await session.LoadAsync&lt;ChannelProfile>(followRecord.ChannelIds);</code></pre><p>The first query loads identifies the record in the <code>FollowRecords</code> collection immediately as it is loading that record using a document id. In a relational database, you would call the document id a primary key. The include of the ChannelIds using the <code>IncludeDocuments</code> method will fetch all of the <code>ChannelProfile</code> records into .NET memory that are referenced in the <code>ChannelIds</code> property. In the case of our sample data above, we load 4 <code>ChannelProfile</code> records at the same time as the <code>FollowRecord</code> object from RavenDb into .NET memory.<p>The final query that populates the <code>followedChannels</code> variable from those <code>ChannelProfile</code> objects already stored in memory.<p>To add the <em>PinnedChannels</em> feature, we simply added another collection of ChannelIds to the <code>FollowRecord</code> object. This means that sample data from above now looks like the following:<pre><code class=language-json>{
    "ChannelIds": [
       "Channels/102402222",
       "Channels/32402099",
@@ -108,43 +21,15 @@ var followedChannels = await session.LoadAsync&lt;ChannelProfile&gt;(followRecor
    "PinnedChannelIds": [
       "Channels/221740520"
    ]
-}</code></pre>
-<p>We can now use a similar query to fetch the profiles of those pinned channels.</p>
-<pre><code class="language-csharp">using var session = Store.OpenAsyncSession();
-var followRecord = await session.LoadAsync&lt;FollowerRecord&gt;(
+}</code></pre><p>We can now use a similar query to fetch the profiles of those pinned channels.<pre><code class=language-csharp>using var session = Store.OpenAsyncSession();
+var followRecord = await session.LoadAsync&lt;FollowerRecord>(
     "Followers/96909659",
     i => i.IncludeDocuments(f => f.PinnedChannelIds)
 );
 
-var pinnedChannels = await session.LoadAsync&lt;ChannelProfile&gt;(followRecord.PinnedChannelIds);</code></pre>
-<p>Easy...  and we can update the <code>PinnedChannelIds</code> collection with a simple <em>Patch</em> command:</p>
-<pre><code class="language-csharp">followRecord.PinnedChannelIds = new string[] { "Channels/148746662", "Channels/221740520" };
-session.Advanced.Patch&lt;FollowerRecord, IEnumerable&lt;string&gt;&gt;(
+var pinnedChannels = await session.LoadAsync&lt;ChannelProfile>(followRecord.PinnedChannelIds);</code></pre><p>Easy... and we can update the <code>PinnedChannelIds</code> collection with a simple <em>Patch</em> command:<pre><code class=language-csharp>followRecord.PinnedChannelIds = new string[] { "Channels/148746662", "Channels/221740520" };
+session.Advanced.Patch&lt;FollowerRecord, IEnumerable&lt;string>>(
     "Followers/96909659",
     f => f.PinnedChannelIds,
     newPinned);
-await session.SaveChangesAsync();</code></pre>
-<p>In a relational database, this <em>patch</em> command would feel like an update statement that updates a record based on its primary key.</p>
-<h2 id="whats-next-for-pinned-channels">What's next for pinned channels?</h2>
-<p>The last part of the pinned channels feature request was to populate the first clips that you find on the KlipTok home page with the <em>latest clips</em> that you have not seen from the channels that you have pinned.  This is a tricky change that involves tracking which clips you watch and using that to determine which clips to add to the home page.</p>
-<p>I'm working through the schema adjustments for this, as well as the privacy implications of tracking this information.  I'll have more to share as that feature completes over the next week.</p>
-<h2 id="looking-forward.to-the-kliptok-mobile-app">Looking forward.. to the KlipTok mobile app</h2>
-<p>I'm getting very comfortable working with <a href="https://docs.microsoft.com/dotnet/maui/what-is-maui">.NET MAUI</a> and have made some initial steps into building a mobile app to complement KlipTok.  I hope to move into working full-time on the mobile app in July.</p>
-<p>The playlists feature has received some cool updates and we're lookng at completing a rollout of a borderless playlist player that you can use with OBS or other tools to create a 'be right back' or 'intro' screen that shows some highlights for you.  We're <a href="https://feedback.kliptok.com/posts/107/streamelements-widget-that-embeds-playlists">planning an integration</a> with <a href="https://streamelements.com">Stream Elements</a> so that you can add a playlist widget to your StreamElements layouts.</p>
-<p>We're also planning updates to the notifications system as well as some user-interface updates around the login process.  Look for these in the August / September timeframe.</p>
-<p>How do you use KlipTok?  What can we do to make it more interactive for you and other viewers?  Vote on the <a href="https://feedback.kliptok.com">feedback site</a>, add your comments to existing items, or tweet us at <a href="https://twitter.com/thekliptok">twitter.com/thekliptok</a></p>
-
-
-					<h5><a href="/blog">Back to front page</a></h5>
-
-				</div>	
-
-			</div>
-
-		</main>
-
-		<footer>Copyright &copy;2021 - 2022 KlipTok Inc.</footer>
-
-		<script src="prism.js"></script>
-	</body>
-</html>
+await session.SaveChangesAsync();</code></pre><p>In a relational database, this <em>patch</em> command would feel like an update statement that updates a record based on its primary key.<h2 id=whats-next-for-pinned-channels>What's next for pinned channels?</h2><p>The last part of the pinned channels feature request was to populate the first clips that you find on the KlipTok home page with the <em>latest clips</em> that you have not seen from the channels that you have pinned. This is a tricky change that involves tracking which clips you watch and using that to determine which clips to add to the home page.<p>I'm working through the schema adjustments for this, as well as the privacy implications of tracking this information. I'll have more to share as that feature completes over the next week.<h2 id=looking-forward.to-the-kliptok-mobile-app>Looking forward.. to the KlipTok mobile app</h2><p>I'm getting very comfortable working with <a href=https://docs.microsoft.com/dotnet/maui/what-is-maui>.NET MAUI</a> and have made some initial steps into building a mobile app to complement KlipTok. I hope to move into working full-time on the mobile app in July.<p>The playlists feature has received some cool updates and we're lookng at completing a rollout of a borderless playlist player that you can use with OBS or other tools to create a 'be right back' or 'intro' screen that shows some highlights for you. We're <a href=https://feedback.kliptok.com/posts/107/streamelements-widget-that-embeds-playlists>planning an integration</a> with <a href=https://streamelements.com>Stream Elements</a> so that you can add a playlist widget to your StreamElements layouts.<p>We're also planning updates to the notifications system as well as some user-interface updates around the login process. Look for these in the August / September timeframe.<p>How do you use KlipTok? What can we do to make it more interactive for you and other viewers? Vote on the <a href=https://feedback.kliptok.com>feedback site</a>, add your comments to existing items, or tweet us at <a href=https://twitter.com/thekliptok>twitter.com/thekliptok</a><h5><a href=/blog>Back to front page</a></h5></div></div></main><footer>Copyright ©2021 - 2022 KlipTok Inc.</footer><script src=prism.js></script></body></html>
