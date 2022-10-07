@@ -83,6 +83,14 @@ header .container {
 
 }
 
+.postTitle {
+	margin-top: 2em;
+}
+
+h2 > a {
+	font-size: 1.6em;
+}
+
 footer {
 	width: 100%;
 	background-color: papayawhip;
@@ -102,6 +110,10 @@ footer {
 	display: inline-block;
 	font-style: italic;
 	padding: 0.5em;
+}
+
+#content > h2:first-child {
+	margin-top: 0!important;
 }
 
 @media screen and (min-width: 1100px) {
