@@ -38,6 +38,7 @@
 					<li><a href="https://feedback.kliptok.com">KlipTok Feedback</a></li>
 					<li><a href="https://github.com/csharpfritz/KlipTok.Blog">Blog source on GitHub</a></li>
 					<li><a href="https://github.com/csharpfritz/KlipTok.Translations">Translation Repository</a></li>
+					<li><a href="{{ ArchiveURL }}">All Posts</a></li>
 				</ul>
 
 				<h2>KlipTok uses:</h2>
@@ -56,6 +57,7 @@
 				<div id="content">
 
 					<h1>{{ Title }}</h1>
+					<h3>Written by: {{ Author }}</h3>
 					<h5>Published: {{ PublishDate }}</h5>
 			
 					{{ Body }}
@@ -68,7 +70,7 @@
 
 		</main>
 
-		<footer>Copyright &copy;2021 KlipTok Inc.</footer>
+		<footer>Copyright &copy;2021 - {{ CurrentYear }} KlipTok Inc.</footer>
 
 		<script src="prism.js"></script>
 	</body>

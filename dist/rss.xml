@@ -1,0 +1,94 @@
+<rss version="2.0">
+<channel>
+<title>Latest News and Notes About KlipTok from the Official KlipTok Blog</title>
+<link>https://kliptok.com/blog</link>
+<description>News and notes about the KlipTok web application.  KlipTok makes Twitch clips and videos easy to search, discover, and share them with friends.</description>
+<language>en-us</language>
+<lastBuildDate>Fri, 07 Oct 2022 15:00:53 GMT</lastBuildDate>
+<ttl>60</ttl>
+<copyright>Copyright 2022 KlipTok LLC</copyright>
+<managingEditor>jeff@jeffreyfritz.com</managingEditor>
+<webMaster>jeff@jeffreyfritz.com</webMaster>
+<pubDate>Fri, 07 Oct 2022 15:00:53 GMT</pubDate>
+<docs>http://blogs.law.harvard.edu/tech/rss</docs>
+<generator>Fritz.StaticWeb</generator>
+<item>
+<title>16M Clips, 2M channels, Categories and Teams arrive on KlipTok</title>
+<link>https://kliptok.com/blog/posts/posts/8-CategoriesAndTeams.html</link>
+<description><p>We hit two large data milestones this month, 16 million clips indexed and more than 2 million channels are now known by KlipTok.  It's a huge step in the growth of the application, and we want to thank all of our supporters for helping spread the word about KlipTok.</p>
+<p>After a few weeks of work, we're delivering two heavily requests sets of pages and content to KlipTok: Categories and Teams.</p></description>
+<pubDate>Wed, 24 Aug 2022 11:30:58 GMT</pubDate>
+<guid>https://kliptok.com/blog/posts/posts/8-CategoriesAndTeams.html</guid>
+</item>
+<item>
+<title>Pin Channels and Performance Updates</title>
+<link>https://kliptok.com/blog/posts/posts/7-PinChannels.html</link>
+<description><p>The &quot;secret sauce&quot; of KlipTok has been that it is a service for streamers, written by a streamer, live on stream. This week, we added a new wrinkle to that mix.  We added a feauture requested by viewers, designed by viewers.</p></description>
+<pubDate>Sun, 19 Jun 2022 09:11:32 GMT</pubDate>
+<guid>https://kliptok.com/blog/posts/posts/7-PinChannels.html</guid>
+</item>
+<item>
+<title>Introducing Channel Suggestions</title>
+<link>https://kliptok.com/blog/posts/posts/6-IntroducingChannelSuggestions.html</link>
+<description><p>Our team that's been working on KlipTok has no experience with building machine learning algorithms.  With some advice from friends on the <a href="https://dotnet.microsoft.com/apps/machinelearning-ai/ml-dotnet">ML.NET</a> project team, they got us pointed to a few demos that would allow us to start using the power of machine learning to make more interesting interactions with KlipTok.</p>
+<p><img src="img/601-MachineLearningGeneratedSuggestedStreamers.png" alt="The new suggested streamers panel on KlipTok, generated using ML.NET" /></p>
+<p>ML.NET makes it easy for .NET developers to build, manage, and consume machine-learning models.  We believe can unlock some interesting insights from the KlipTok data using this framework.</p>
+<p>In particular, we went through the <a href="https://docs.microsoft.com/dotnet/machine-learning/tutorials/movie-recommendation">&quot;Movie Recommendation&quot; tutorial</a> and immediately identified some changes that we could implement in KlipTok.  In particular, let's use a similar technique to suggest channels based on the channels you already follow on Twitch.</p>
+<p>Let me explain how we use ML.NET to recommend channels for KlipTok.</p></description>
+<pubDate>Tue, 10 May 2022 21:11:00 GMT</pubDate>
+<guid>https://kliptok.com/blog/posts/posts/6-IntroducingChannelSuggestions.html</guid>
+</item>
+<item>
+<title>Updates, 11 Million Clips, and Introducing Playlists</title>
+<link>https://kliptok.com/blog/posts/posts/4-Introducing_Playlists.html</link>
+<description><p>It's been a long while since we've published an update about KlipTok, and there's a lot to document that's happened since.  More clips, more features, architecture changes and cool new features we're planning.</p>
+<p>Let's first talk about growth.  KlipTok indexes a LOT of clips</p></description>
+<pubDate>Sun, 01 May 2022 16:00:00 GMT</pubDate>
+<guid>https://kliptok.com/blog/posts/posts/4-Introducing_Playlists.html</guid>
+</item>
+<item>
+<title>Milestone Reached - 4 MILLION Clips Indexed!</title>
+<link>https://kliptok.com/blog/posts/posts/4-FourMillionChannels.html</link>
+<description><p>KlipTok just crossed another major milestone on the evening of August 18th:</p>
+<div class="center">
+<p><img src="img/4million.PNG" alt="4 million clips on the KlipTok dashboard" /></p>
+</div>
+<p>We're now service more than 4 million klips for about 750 Twitch channels with more than 11k transcriptions.  It's a huge step, and is stored on about 10GB of storage for the database and search indexes.</p></description>
+<pubDate>Thu, 19 Aug 2021 21:00:00 GMT</pubDate>
+<guid>https://kliptok.com/blog/posts/posts/4-FourMillionChannels.html</guid>
+</item>
+<item>
+<title>Version 0.23 - Introducing IAB Categories and Content Safety</title>
+<link>https://kliptok.com/blog/posts/posts/3-IntroducingCategoriesAndContentSafety.html</link>
+<description><p>This week we are happy to announce the release of Version 0.23 with a number of small fixes, updated translations, a new translation for Slovenian, and a new feature: IAB Categories and Content Safety tags for transcribed clips.  I'm definitely burying the lede here, but I think it's worth it to give you a quick summary of what's new.</p></description>
+<pubDate>Sat, 14 Aug 2021 14:15:00 GMT</pubDate>
+<guid>https://kliptok.com/blog/posts/posts/3-IntroducingCategoriesAndContentSafety.html</guid>
+</item>
+<item>
+<title>Most Requested Feature Deployed - Live Now on Twitch</title>
+<link>https://kliptok.com/blog/posts/posts/2-IntroducingLiveIndicators.html</link>
+<description><p>Over the last few months, the most requested feature on KlipTok on the <a href="https://feedback.kliptok.com">feedback site</a> has been the addition of a &quot;Live Now&quot; indicator for the list of channels.</p>
+<div class="center">
+<p><a href="https://feedback.kliptok.com/posts/23/live-now-icon-next-to-the-channels-name-in-the-list-of-streamers"><img src="img/feedback-LiveIndicator.png" alt="Screenshot from feedback.kliptok.com - Request to add a 'Live' indicator next to channels" /></a></p>
+<p><span aria-label="caption" class="caption">Original feedback requesting the Live Indicator</span></p>
+</div>
+<p>On Twitch, its a simple red circle.. the circle doesn't really tell you anything, and you need to hover over it in order to see what it actually means.  On KlipTok, we want to be more inclusive and support folks that have different web usage capabilities.</p>
+<p>Our 'Live Now' indicator is a red rounded square with the word 'LIVE' in the middle.  It's easy to spot and clear what it's referring to.  If you click on it, you'll be taken to their channel in a new tab of your browser.</p>
+<p>You can even use the sidebar refresh buttons, the spinning arrows next to the titles in the sidebar, to refresh the list of current channels that KlipTok has for you and it will update the Live status appropriately as well.</p>
+<div class="center">
+<p><img src="img/liveIndicator.png" alt="Screenshot of KlipTok showing the new LIVE indicator in the sidebar" /></p>
+<p><span aria-label="caption" class="caption">Implementation of the Live Indicator on KlipTok</span></p>
+</div></description>
+<pubDate>Sat, 31 Jul 2021 16:00:00 GMT</pubDate>
+<guid>https://kliptok.com/blog/posts/posts/2-IntroducingLiveIndicators.html</guid>
+</item>
+<item>
+<title>Welcome to KlipTok!</title>
+<link>https://kliptok.com/blog/posts/posts/1-WelcomeToKlipTok.html</link>
+<description><p>This is our first post on the KlipTok blog, and I'm thrilled to have this live for folks to learn more about how KlipTok is built and to allow us to announce new features as well as milestones reached.  I'll have a few more posts today and later this week talking about what KlipTok is, how it was built, and how you can participate.</p></description>
+<pubDate>Sat, 24 Jul 2021 14:22:00 GMT</pubDate>
+<guid>https://kliptok.com/blog/posts/posts/1-WelcomeToKlipTok.html</guid>
+</item>
+
+</channel>
+</rss>

@@ -1,4 +1,9 @@
 {
 	"theme": "kliptok",
-	"title": "Latest News and Notes About KlipTok from the Official KlipTok Blog"
+	"title": "Latest News and Notes About KlipTok from the Official KlipTok Blog",
+	"link": "https://kliptok.com/blog",
+	"description": "News and notes about the KlipTok web application.  KlipTok makes Twitch clips and videos easy to search, discover, and share them with friends.",
+	"owner": "KlipTok LLC",
+	"editor_email": "jeff@jeffreyfritz.com",
+	"webmaster_email": "jeff@jeffreyfritz.com"
 }

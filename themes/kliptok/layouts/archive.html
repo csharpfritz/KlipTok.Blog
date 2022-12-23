@@ -1,0 +1,69 @@
+<html>
+	<head>
+		<title>{{ Title }}</title>
+		<base href="./">
+		<link rel="stylesheet" type="text/css" href="site.css">
+		<link rel="stylesheet" type="text/css" href="prism.css">
+
+		<!-- Global site tag (gtag.js) - Google Analytics -->
+		<script async src="https://www.googletagmanager.com/gtag/js?id=G-371VNCMVCF"></script>
+		<script>
+			window.dataLayer = window.dataLayer || [];
+			function gtag(){dataLayer.push(arguments);}
+			gtag('js', new Date());
+
+			gtag('config', 'G-371VNCMVCF');
+		</script>
+
+	</head>
+	<body>
+
+		<header>
+			<div class="container">
+				<a href="./"><img src="kliptok.png" alt="KlipTok Logo" /></a>
+				<div>
+					<h1><a href="./">KlipTok News and Notes</a></h1>
+					<h3>All the latest updates about the KlipTok application</h3>
+				</div>
+			</div>
+		</header>
+
+		<main>
+
+			<div id="sidebar">
+				
+				<h2>Links</h2>
+				<ul>	
+					<li><a href="https://kliptok.com">KlipTok</a></li>
+					<li><a href="https://feedback.kliptok.com">KlipTok Feedback</a></li>
+					<li><a href="https://github.com/csharpfritz/KlipTok.Blog">Blog source on GitHub</a></li>
+					<li><a href="https://github.com/csharpfritz/KlipTok.Translations">Translation Repository</a></li>
+				</ul>
+
+				<h2>KlipTok uses:</h2>
+				<ul>
+					<li><a href="https://www.telerik.com/blazor-ui">Telerik UI for Blazor</a></li>
+					<li><a href="https://assemblyai.com">Assembly AI transcription services</a></li>
+					<li><a href="https://ravendb.net">RavenDb database</a></li>
+					<li><a href="https://github.com/csharpfritz/Fritz.StaticWeb">Fritz Static Web Generator</a></li>
+				</ul>
+
+				<a href="https://twitter.com/thekliptok?ref_src=twsrc%5Etfw" class="twitter-follow-button" data-show-count="false">Follow @thekliptok</a><script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+		
+			</div>
+
+			<div id="main">
+				
+				<div id="content" class="archive">
+					<h1>All Posts</h1>
+					{{ Body }}
+				</div>
+			</div>
+
+		</main>
+
+		<footer>Copyright &copy; 2021 - {{ CurrentYear }} KlipTok Inc.</footer>
+
+		<script src="prism.js"></script>
+	</body>
+</html>

@@ -1,5 +1,6 @@
 ---
 title: Most Requested Feature Deployed - Live Now on Twitch
+author: Jeff Fritz
 draft: false
 publishdate: 2021-07-31T16:00
 ---
