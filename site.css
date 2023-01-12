@@ -37,8 +37,14 @@ header .container {
 	width: 100%;
 }
 
-@media screen and (max-width: 767.9px) {
+main {
+	display: flex;
+	flex-direction: column;
+	flex: 1 1;
+}
 
+@media screen and (max-width: 767.9px) {
+	
 	#main, #sidebar {
 		width: 100%;
 		padding: 1em;
@@ -46,7 +52,10 @@ header .container {
 
 	#main { min-height: calc(100vh - 125px - 2.9em); }
 
-	#sidebar { border-bottom: 1px solid #EEE; }
+	#sidebar { 
+		border-bottom: 1px solid #EEE; 
+		order: 2;
+	}
 
 }
 
@@ -56,12 +65,13 @@ header .container {
 
 	main {
 		display: flex;
-		flex-direction: row-reverse;
+		flex-direction: row;
 	}
 
 	#sidebar {
 		width: 15em;
 		padding: 1em;
+		order: 1;
 	}
 
 	#sidebar h2 {
