@@ -9,7 +9,7 @@ In the time since KlipTok launched in November 2020, our intent with the content
 
 We want to focus on improving the experience for the casual visitors to KlipTok.  We define 'casual visitors' as folks who browse to the website without logging in.  The casual visitor browses the site and does not want KlipTok to interact with their Twitch account or save preferences for interacting with the site.
 
-One of the features requested for some time on the KlipTok feedback site has been a 'mature flag' that identifies content that could be considered risqué or racy that some folks would like to avoid. In this post, we're going to introduce a new 'racy' safety warning on KlipTok and discuss the feedback that went into the feature as well as introduce the next round of features to support this type of community standards enforcement.
+One of the features requested for some time on the [KlipTok feedback site has been a 'mature flag'](https://feedback.kliptok.com/posts/47/mature-flag) that identifies content that could be considered risqué or racy that some folks would like to avoid. In this post, we're going to introduce a new 'racy' safety warning on KlipTok and discuss the feedback that went into the feature as well as introduce the next round of features to support this type of community standards enforcement.
 
 ## Nothing is removed from KlipTok
 
