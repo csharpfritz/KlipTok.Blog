@@ -4,18 +4,18 @@
     <link>https://kliptok.com/blog</link>
     <description>News and notes about the KlipTok web application.  KlipTok makes Twitch clips and videos easy to search, discover, and share them with friends.</description>
     <language>en-us</language>
-    <lastBuildDate>Thu, 12 Jan 2023 14:56:09 GMT</lastBuildDate>
+    <lastBuildDate>Thu, 12 Jan 2023 15:02:24 GMT</lastBuildDate>
     <ttl>60</ttl>
     <copyright>Copyright 2023 KlipTok LLC</copyright>  <managingEditor>jeff@jeffreyfritz.com</managingEditor>
   <webMaster>jeff@jeffreyfritz.com</webMaster>
-  <pubDate>Thu, 12 Jan 2023 14:56:09 GMT</pubDate>
+  <pubDate>Thu, 12 Jan 2023 15:02:24 GMT</pubDate>
   <docs>http://blogs.law.harvard.edu/tech/rss</docs>
   <generator>Fritz.StaticWeb</generator>  <item>
     <title>Artificial Intelligence and Mature Content</title>
     <link>https://kliptok.com/blog/posts/posts/Artificial-Intelligence-and-Mature-Content.html</link>
     <description><p>In the time since KlipTok launched in November 2020, our intent with the content presented is that it would closely mirror the content of Twitch, its parent platform. It's been great to see that the popular games and content from Twitch appear in a similar pattern of growth and waning on KlipTok. To that end, we've seen some content appear that various communities around the world would consider racy.</p>
 <p>We want to focus on improving the experience for the casual visitors to KlipTok.  We define 'casual visitors' as folks who browse to the website without logging in.  The casual visitor browses the site and does not want KlipTok to interact with their Twitch account or save preferences for interacting with the site.</p>
-<p>One of the features requested for some time on the KlipTok feedback site has been a 'mature flag' that identifies content that could be considered risqué or racy that some folks would like to avoid. In this post, we're going to introduce a new 'racy' safety warning on KlipTok and discuss the feedback that went into the feature as well as introduce the next round of features to support this type of community standards enforcement.</p></description>
+<p>One of the features requested for some time on the <a href="https://feedback.kliptok.com/posts/47/mature-flag">KlipTok feedback site has been a 'mature flag'</a> that identifies content that could be considered risqué or racy that some folks would like to avoid. In this post, we're going to introduce a new 'racy' safety warning on KlipTok and discuss the feedback that went into the feature as well as introduce the next round of features to support this type of community standards enforcement.</p></description>
     <pubDate>Thu, 12 Jan 2023 09:45:00 GMT</pubDate>
     <guid>https://kliptok.com/blog/posts/posts/Artificial-Intelligence-and-Mature-Content.html</guid>
   </item>  <item>
